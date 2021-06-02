@@ -5,7 +5,7 @@
   "main": "AppServer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "Node AppServer.js"
+    "start": "node AppServer.js"
   },
   "keywords": [],
   "author": "",
