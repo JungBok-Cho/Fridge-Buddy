@@ -490,14 +490,15 @@ __webpack_require__.r(__webpack_exports__);
 class UserApiService {
     constructor(http) {
         this.http = http;
-        this.url = this.http.get('/users');
+        this.hostUrl = 'https://fridgebuddy555.azurewebsites.net';
+        this.path = '/users';
     }
     addUser(body) {
         console.warn(body);
-        return this.http.post('/users', body);
+        return this.http.post(this.hostUrl + this.path, body);
     }
     getAllUsers() {
-        return this.url;
+        return this.http.get(this.hostUrl + this.path);
     }
 }
 UserApiService.ɵfac = function UserApiService_Factory(t) { return new (t || UserApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
@@ -1202,10 +1203,11 @@ __webpack_require__.r(__webpack_exports__);
 class RecipeApiService {
     constructor(http) {
         this.http = http;
-        this.url = this.http.get('/recipes');
+        this.hostUrl = 'https://fridgebuddy555.azurewebsites.net';
+        this.path = '/recipes';
     }
     getRecipes() {
-        return this.url;
+        return this.http.get(this.hostUrl + this.path);
     }
     searchByIngredients(ingredientsArray) {
         let query = '';
@@ -1213,19 +1215,19 @@ class RecipeApiService {
             let temp = 'array=' + ingredient + '&';
             query += temp;
         }
-        return this.http.get('/recipes/byIngredients?' + query);
+        return this.http.get(this.hostUrl + this.path + '/byIngredients?' + query);
     }
     searchByCuisine(cuisine) {
-        return this.http.get('/recipes/byCuisine/' + cuisine);
+        return this.http.get(this.hostUrl + this.path + '/byCuisine/' + cuisine);
     }
     getRecipeById(recipeId) {
-        return this.http.get('/recipes/find/' + recipeId);
+        return this.http.get(this.hostUrl + this.path + '/find/' + recipeId);
     }
     getReviewsForRecipe(recipeId) {
-        return this.http.get('/recipes/getReviewList/' + recipeId);
+        return this.http.get(this.hostUrl + this.path + '/getReviewList/' + recipeId);
     }
     getTopTenRecipe(filter) {
-        return this.http.get('/recipes/topTenBy' + filter);
+        return this.http.get(this.hostUrl + this.path + '/topTenBy' + filter);
     }
 }
 RecipeApiService.ɵfac = function RecipeApiService_Factory(t) { return new (t || RecipeApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
