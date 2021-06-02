@@ -1,0 +1,9 @@
+createDB/
+curlCommands/
+dbCommands/
+e2e/
+node_modules/
+docs/
+db/
+!Test/getMultipleTest.js
+!Test/getMultipleTest.js
