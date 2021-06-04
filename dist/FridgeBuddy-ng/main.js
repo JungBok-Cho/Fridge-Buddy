@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\VS_Code_Project\FridgeBuddy_Angular\AngularFridgeBuddy\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! D:\Users\roofeng\Repos\AngularFridgeBuddy\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -490,15 +490,14 @@ __webpack_require__.r(__webpack_exports__);
 class UserApiService {
     constructor(http) {
         this.http = http;
-        this.hostUrl = 'http://fridgebuddy555.azurewebsites.net';
         this.path = '/users';
     }
     addUser(body) {
         console.warn(body);
-        return this.http.post(this.hostUrl + this.path, body);
+        return this.http.post(this.path, body);
     }
     getAllUsers() {
-        return this.http.get(this.hostUrl + this.path);
+        return this.http.get(this.path);
     }
 }
 UserApiService.ɵfac = function UserApiService_Factory(t) { return new (t || UserApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
@@ -1203,11 +1202,11 @@ __webpack_require__.r(__webpack_exports__);
 class RecipeApiService {
     constructor(http) {
         this.http = http;
-        this.hostUrl = 'http://fridgebuddy555.azurewebsites.net';
+        //hostUrl:string = 'http://fridgebuddy555.azurewebsites.net';
         this.path = '/recipes';
     }
     getRecipes() {
-        return this.http.get(this.hostUrl + this.path);
+        return this.http.get(this.path);
     }
     searchByIngredients(ingredientsArray) {
         let query = '';
@@ -1215,19 +1214,19 @@ class RecipeApiService {
             let temp = 'array=' + ingredient + '&';
             query += temp;
         }
-        return this.http.get(this.hostUrl + this.path + '/byIngredients?' + query);
+        return this.http.get(this.path + '/byIngredients?' + query);
     }
     searchByCuisine(cuisine) {
-        return this.http.get(this.hostUrl + this.path + '/byCuisine/' + cuisine);
+        return this.http.get(this.path + '/byCuisine/' + cuisine);
     }
     getRecipeById(recipeId) {
-        return this.http.get(this.hostUrl + this.path + '/find/' + recipeId);
+        return this.http.get(this.path + '/find/' + recipeId);
     }
     getReviewsForRecipe(recipeId) {
-        return this.http.get(this.hostUrl + this.path + '/getReviewList/' + recipeId);
+        return this.http.get(this.path + '/getReviewList/' + recipeId);
     }
     getTopTenRecipe(filter) {
-        return this.http.get(this.hostUrl + this.path + '/topTenBy' + filter);
+        return this.http.get(this.path + '/topTenBy' + filter);
     }
 }
 RecipeApiService.ɵfac = function RecipeApiService_Factory(t) { return new (t || RecipeApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
