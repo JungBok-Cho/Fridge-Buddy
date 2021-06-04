@@ -40,11 +40,16 @@ exports.App = void 0;
 var express = require("express");
 var logger = require("morgan");
 var bodyParser = require("body-parser");
+var session = require("express-session");
+var cookieParser = require("cookie-parser");
+var GooglePassport_1 = require("./GooglePassport");
+var passport = require("passport");
 var RecipeModel_1 = require("./Models/RecipeModel");
 var ReviewModel_1 = require("./Models/ReviewModel");
 var UserModel_1 = require("./Models/UserModel");
 var App = /** @class */ (function () {
     function App() {
+        this.googlePassportObj = new GooglePassport_1["default"]();
         this.expressApp = express();
         this.middleware();
         this.routes();
@@ -57,15 +62,33 @@ var App = /** @class */ (function () {
         this.expressApp.use(logger('dev'));
         this.expressApp.use(bodyParser.json());
         this.expressApp.use(bodyParser.urlencoded({ extended: false }));
-        this.expressApp.use(function (req, res, next) {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            next();
-        });
+        this.expressApp.use(session({ secret: 'keyboard cat' }));
+        this.expressApp.use(cookieParser());
+        this.expressApp.use(passport.initialize());
+        this.expressApp.use(passport.session());
+        // this.expressApp.use(function(req, res, next) {
+        //     res.header("Access-Control-Allow-Origin", "*");
+        //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        //     next();
+        //  });
+    };
+    App.prototype.validateAuth = function (req, res, next) {
+        if (req.isAuthenticated()) {
+            console.log("user is authenticated");
+            return next();
+        }
+        console.log("user is not authenticated");
+        res.redirect('/#/login');
     };
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+        router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/#/login' }), function (req, res) {
+            console.log("successfully authenticated user and returned to callback page.");
+            console.log("redirecting to /#");
+            res.redirect('/#');
+        });
         /**********   RECIPE OPERATION  ************************************************************/
         // Get all recipes
         router.get('/recipes', function (req, res) {
