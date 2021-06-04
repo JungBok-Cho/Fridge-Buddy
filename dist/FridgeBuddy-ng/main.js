@@ -490,7 +490,7 @@ __webpack_require__.r(__webpack_exports__);
 class UserApiService {
     constructor(http) {
         this.http = http;
-        this.hostUrl = 'https://fridgebuddy555.azurewebsites.net';
+        this.hostUrl = 'http://fridgebuddy555.azurewebsites.net';
         this.path = '/users';
     }
     addUser(body) {
@@ -1203,7 +1203,7 @@ __webpack_require__.r(__webpack_exports__);
 class RecipeApiService {
     constructor(http) {
         this.http = http;
-        this.hostUrl = 'https://fridgebuddy555.azurewebsites.net';
+        this.hostUrl = 'http://fridgebuddy555.azurewebsites.net';
         this.path = '/recipes';
     }
     getRecipes() {
