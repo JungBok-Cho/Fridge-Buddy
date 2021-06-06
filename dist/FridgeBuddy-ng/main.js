@@ -653,7 +653,9 @@ class SearchByIngredientsComponent {
     }
     getIngredient() {
         this.ingredientApiService.getIngredients().subscribe((result) => {
-            this.ingredientsArray = result.ingredientName;
+            for (let ingredient of result.ingredientName) {
+                this.ingredientsArray.push(ingredient);
+            }
         });
     }
     onSelectIngredient(ingredient) {
