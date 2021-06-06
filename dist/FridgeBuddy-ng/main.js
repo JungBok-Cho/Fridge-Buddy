@@ -646,6 +646,7 @@ class SearchByIngredientsComponent {
         this.selectedIngredients = new Set;
         this.resultArray = [];
         this.recipeApiService = service;
+        this.getIngredient();
     }
     getIngredient() {
         let listIngredient = this.ingredientApiService.getIngredients().subscribe((result) => {
