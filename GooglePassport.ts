@@ -8,6 +8,7 @@ let GoogleStrategy = require('passport-google-oauth20-with-people-api').Strategy
 class GooglePassport {
     userId: string;
     displayName: string;
+    email: string;
     clientId: string;
     secretId: string;
      
@@ -19,7 +20,7 @@ class GooglePassport {
                 clientID: this.clientId,
                 clientSecret: this.secretId,
                 callbackURL: "/auth/google/callback",
-                profileFields: ['id', 'displayName']
+                profileFields: ['id', 'displayName', 'email']
             },
             (accessToken, refreshToken, profile, done) => {
                 console.log("inside new password google strategy");
@@ -27,12 +28,12 @@ class GooglePassport {
                     console.log('validating google profile:' + JSON.stringify(profile));
                     console.log("userId:" + profile.id);
                     console.log("displayName: " + profile.displayName);
+                    console.log("email: " + profile.emails[0].value);
 
                     this.userId = profile.id;
                     this.displayName = profile.displayName;
-                    // console.log('email: ' + profile);
+                    this.email = profile.emails[0].value;
                     console.log("retrieve all of the profile info needed");
-                    // this.email = profile.emails[0].value;
                     return done(null, profile);
                 }); 
             }
