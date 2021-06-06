@@ -351,12 +351,13 @@ function UserAccountPageComponent_div_61_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", false);
 } }
 class UserAccountPageComponent {
-    // @Output() outToParent = new EventEmitter<string>();
-    // @Input() loginStatus: string;
     constructor(router, auth) {
         this.router = router;
         this.auth = auth;
         this.userApiService = auth;
+        this.auth.getUserProfile().subscribe(data => {
+            this.currentUser = JSON.stringify(data).replace(/"/g, "");
+        });
     }
     ngOnInit() {
     }
@@ -371,7 +372,7 @@ class UserAccountPageComponent {
     }
 }
 UserAccountPageComponent.ɵfac = function UserAccountPageComponent_Factory(t) { return new (t || UserAccountPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_user_api_service__WEBPACK_IMPORTED_MODULE_3__["UserApiService"])); };
-UserAccountPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: UserAccountPageComponent, selectors: [["app-user-account-page"]], decls: 62, vars: 5, consts: [[1, "container"], [1, "main-body"], ["aria-label", "breadcrumb", "class", "main-breadcrumb", 4, "ngIf"], [1, "row", "gutters-sm"], [1, "col-md-4", "mb-3"], [1, "card"], [1, "card-body"], [1, "d-flex", "flex-column", "align-items-center", "text-center"], ["src", "https://bootdey.com/img/Content/avatar/avatar7.png", "alt", "Admin", "width", "150", 1, "rounded-circle"], [1, "mt-3"], [1, "text-secondary", "mb-1"], [1, "text-muted", "font-size-sm"], [1, "btn", "btn-primary", 3, "click"], ["class", "btn btn-outline-primary", 4, "ngIf"], ["class", "card mt-3", 4, "ngIf"], [1, "col-md-8"], [1, "card", "mb-3"], [1, "row"], [1, "col-sm-3"], [1, "mb-0"], [1, "col-sm-9", "text-secondary"], [1, "col-sm-12"], ["class", "btn btn-info ", "target", "__blank", "href", "https://www.bootdey.com/snippets/view/profile-edit-data-and-skills", 4, "ngIf"], ["class", "row gutters-sm", 4, "ngIf"], ["aria-label", "breadcrumb", 1, "main-breadcrumb"], [1, "breadcrumb"], [1, "breadcrumb-item"], ["href", "index.html"], ["href", "javascript:void(0)"], ["aria-current", "page", 1, "breadcrumb-item", "active"], [1, "btn", "btn-outline-primary"], [1, "card", "mt-3"], [1, "list-group", "list-group-flush"], [1, "list-group-item", "d-flex", "justify-content-between", "align-items-center", "flex-wrap"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-globe", "mr-2", "icon-inline"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "2", "y1", "12", "x2", "22", "y2", "12"], ["d", "M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"], [1, "text-secondary"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-github", "mr-2", "icon-inline"], ["d", "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-twitter", "mr-2", "icon-inline", "text-info"], ["d", "M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-instagram", "mr-2", "icon-inline", "text-danger"], ["x", "2", "y", "2", "width", "20", "height", "20", "rx", "5", "ry", "5"], ["d", "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"], ["x1", "17.5", "y1", "6.5", "x2", "17.51", "y2", "6.5"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-facebook", "mr-2", "icon-inline", "text-primary"], ["d", "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"], ["target", "__blank", "href", "https://www.bootdey.com/snippets/view/profile-edit-data-and-skills", 1, "btn", "btn-info"], [1, "col-sm-6", "mb-3"], [1, "card", "h-100"], [1, "d-flex", "align-items-center", "mb-3"], [1, "material-icons", "text-info", "mr-2"], [1, "progress", "mb-3", 2, "height", "5px"], ["role", "progressbar", "aria-valuenow", "80", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "80%"], ["role", "progressbar", "aria-valuenow", "72", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "72%"], ["role", "progressbar", "aria-valuenow", "89", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "89%"], ["role", "progressbar", "aria-valuenow", "55", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "55%"], ["role", "progressbar", "aria-valuenow", "66", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "66%"], ["class", "col-sm-6 mb-3", 4, "ngIf"]], template: function UserAccountPageComponent_Template(rf, ctx) { if (rf & 1) {
+UserAccountPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: UserAccountPageComponent, selectors: [["app-user-account-page"]], decls: 62, vars: 7, consts: [[1, "container"], [1, "main-body"], ["aria-label", "breadcrumb", "class", "main-breadcrumb", 4, "ngIf"], [1, "row", "gutters-sm"], [1, "col-md-4", "mb-3"], [1, "card"], [1, "card-body"], [1, "d-flex", "flex-column", "align-items-center", "text-center"], ["src", "https://bootdey.com/img/Content/avatar/avatar7.png", "alt", "Admin", "width", "150", 1, "rounded-circle"], [1, "mt-3"], [1, "text-secondary", "mb-1"], [1, "text-muted", "font-size-sm"], [1, "btn", "btn-primary", 3, "click"], ["class", "btn btn-outline-primary", 4, "ngIf"], ["class", "card mt-3", 4, "ngIf"], [1, "col-md-8"], [1, "card", "mb-3"], [1, "row"], [1, "col-sm-3"], [1, "mb-0"], [1, "col-sm-9", "text-secondary"], [1, "col-sm-12"], ["class", "btn btn-info ", "target", "__blank", "href", "https://www.bootdey.com/snippets/view/profile-edit-data-and-skills", 4, "ngIf"], ["class", "row gutters-sm", 4, "ngIf"], ["aria-label", "breadcrumb", 1, "main-breadcrumb"], [1, "breadcrumb"], [1, "breadcrumb-item"], ["href", "index.html"], ["href", "javascript:void(0)"], ["aria-current", "page", 1, "breadcrumb-item", "active"], [1, "btn", "btn-outline-primary"], [1, "card", "mt-3"], [1, "list-group", "list-group-flush"], [1, "list-group-item", "d-flex", "justify-content-between", "align-items-center", "flex-wrap"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-globe", "mr-2", "icon-inline"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "2", "y1", "12", "x2", "22", "y2", "12"], ["d", "M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"], [1, "text-secondary"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-github", "mr-2", "icon-inline"], ["d", "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-twitter", "mr-2", "icon-inline", "text-info"], ["d", "M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-instagram", "mr-2", "icon-inline", "text-danger"], ["x", "2", "y", "2", "width", "20", "height", "20", "rx", "5", "ry", "5"], ["d", "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"], ["x1", "17.5", "y1", "6.5", "x2", "17.51", "y2", "6.5"], ["xmlns", "http://www.w3.org/2000/svg", "width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 1, "feather", "feather-facebook", "mr-2", "icon-inline", "text-primary"], ["d", "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"], ["target", "__blank", "href", "https://www.bootdey.com/snippets/view/profile-edit-data-and-skills", 1, "btn", "btn-info"], [1, "col-sm-6", "mb-3"], [1, "card", "h-100"], [1, "d-flex", "align-items-center", "mb-3"], [1, "material-icons", "text-info", "mr-2"], [1, "progress", "mb-3", 2, "height", "5px"], ["role", "progressbar", "aria-valuenow", "80", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "80%"], ["role", "progressbar", "aria-valuenow", "72", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "72%"], ["role", "progressbar", "aria-valuenow", "89", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "89%"], ["role", "progressbar", "aria-valuenow", "55", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "55%"], ["role", "progressbar", "aria-valuenow", "66", "aria-valuemin", "0", "aria-valuemax", "100", 1, "progress-bar", "bg-primary", 2, "width", "66%"], ["class", "col-sm-6 mb-3", 4, "ngIf"]], template: function UserAccountPageComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, UserAccountPageComponent_nav_2_Template, 10, 0, "nav", 2);
@@ -383,7 +384,7 @@ UserAccountPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ�
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](8, "img", 8);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "div", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "h4");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "Sam Borhan");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "p", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "Full Stack Developer");
@@ -412,7 +413,7 @@ UserAccountPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ�
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "div", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, " sam borhan ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](29, "hr");
@@ -475,11 +476,15 @@ UserAccountPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ�
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", false);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx.currentUser, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", false);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", false);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx.currentUser, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](32);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", false);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", false);
@@ -570,8 +575,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchByIngredientsComponent", function() { return SearchByIngredientsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _recipe_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../recipe-api-service */ "W+0M");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _ingredient_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ingredient-api.service */ "KdpR");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
 
 
 
@@ -641,11 +648,20 @@ function SearchByIngredientsComponent_li_22_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](6, _c1).constructor(result_r7.avgRate));
 } }
 class SearchByIngredientsComponent {
-    constructor(service) {
-        this.ingredientsArray = ['Egg', 'Broccoli', 'Beef', 'Salmon'];
+    constructor(Recipeservice, IngredientService) {
+        this.ingredientsArray = [];
         this.selectedIngredients = new Set;
         this.resultArray = [];
-        this.recipeApiService = service;
+        this.recipeApiService = Recipeservice;
+        this.ingredientApiService = IngredientService;
+        this.getIngredient();
+    }
+    getIngredient() {
+        this.ingredientApiService.getIngredients().subscribe((result) => {
+            for (let ingredient of result[0].ingredientName) {
+                this.ingredientsArray.push(ingredient);
+            }
+        });
     }
     onSelectIngredient(ingredient) {
         this.selectedIngredients.add(ingredient);
@@ -672,7 +688,7 @@ class SearchByIngredientsComponent {
     ngOnInit() {
     }
 }
-SearchByIngredientsComponent.ɵfac = function SearchByIngredientsComponent_Factory(t) { return new (t || SearchByIngredientsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_1__["RecipeApiService"])); };
+SearchByIngredientsComponent.ɵfac = function SearchByIngredientsComponent_Factory(t) { return new (t || SearchByIngredientsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_1__["RecipeApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ingredient_api_service__WEBPACK_IMPORTED_MODULE_2__["IngredientApiService"])); };
 SearchByIngredientsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SearchByIngredientsComponent, selectors: [["app-search-by-ingredients"]], decls: 23, vars: 3, consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-6"], [1, "input-group"], ["id", "Ingredient", 1, "custom-select", 3, "change"], ["selected", ""], [3, "value", 4, "ngFor", "ngForOf"], [1, "card"], [1, "card-body"], [4, "ngFor", "ngForOf"], [1, "btn", "btn-light", 3, "click"], [1, "list-group"], ["class", "list-group-item", 4, "ngFor", "ngForOf"], [3, "value"], [1, "pull-right"], ["id", "remove-icon", 3, "click"], [1, "fas", "fa-trash"], [1, "list-group-item"], [3, "routerLink"], [1, "col-md-3"], ["alt", "", 1, "img-thumbnail", 3, "src"], [1, "col-md-9"], [1, "result-text"], ["id", "star-icon", "class", "fas fa-star", 4, "ngFor", "ngForOf"], ["id", "star-icon", 1, "fas", "fa-star"]], template: function SearchByIngredientsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "br");
@@ -719,7 +735,36 @@ SearchByIngredientsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__[
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.selectedIngredients);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.resultArray);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"]], styles: ["#Ingredient[_ngcontent-%COMP%] {\r\n    width: 200px;\r\n\r\n}\r\n\r\n.card-body[_ngcontent-%COMP%]{\r\n    height: 20em;\r\n}\r\n\r\nimg[_ngcontent-%COMP%]{\r\n    width: 100px;\r\n    height: 80px;\r\n}\r\n\r\n.result-text[_ngcontent-%COMP%] {\r\n    margin: 10px;\r\n\r\n}\r\n\r\np[_ngcontent-%COMP%] {\r\n    line-height: 10px;\r\n}\r\n\r\n.missing-ingredient[_ngcontent-%COMP%] {\r\n    font-style: italic;\r\n    font-size: smaller;\r\n    color: red;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n    list-style-type: none;\r\n}\r\n\r\n#remove-icon[_ngcontent-%COMP%] {\r\n    border: none;\r\n    background-color: transparent;\r\n}\r\n\r\n#star-icon[_ngcontent-%COMP%] {\r\n    font-size: smaller;\r\n    vertical-align: middle;\r\n    color: gold;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTs7QUFFaEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZOztBQUVoQjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsVUFBVTtBQUNkOztBQUVBO0lBQ0kscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixzQkFBc0I7SUFDdEIsV0FBVztBQUNmIiwiZmlsZSI6InNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI0luZ3JlZGllbnQge1xyXG4gICAgd2lkdGg6IDIwMHB4O1xyXG5cclxufVxyXG5cclxuLmNhcmQtYm9keXtcclxuICAgIGhlaWdodDogMjBlbTtcclxufVxyXG5cclxuaW1ne1xyXG4gICAgd2lkdGg6IDEwMHB4O1xyXG4gICAgaGVpZ2h0OiA4MHB4O1xyXG59XHJcblxyXG4ucmVzdWx0LXRleHQge1xyXG4gICAgbWFyZ2luOiAxMHB4O1xyXG5cclxufVxyXG5cclxucCB7XHJcbiAgICBsaW5lLWhlaWdodDogMTBweDtcclxufVxyXG5cclxuLm1pc3NpbmctaW5ncmVkaWVudCB7XHJcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XHJcbiAgICBmb250LXNpemU6IHNtYWxsZXI7XHJcbiAgICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG5saSB7XHJcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XHJcbn1cclxuXHJcbiNyZW1vdmUtaWNvbiB7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxufVxyXG5cclxuI3N0YXItaWNvbiB7XHJcbiAgICBmb250LXNpemU6IHNtYWxsZXI7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xyXG4gICAgY29sb3I6IGdvbGQ7XHJcbn0iXX0= */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLinkWithHref"]], styles: ["#Ingredient[_ngcontent-%COMP%] {\r\n    width: 200px;\r\n\r\n}\r\n\r\n.card-body[_ngcontent-%COMP%]{\r\n    height: 20em;\r\n}\r\n\r\nimg[_ngcontent-%COMP%]{\r\n    width: 100px;\r\n    height: 80px;\r\n}\r\n\r\n.result-text[_ngcontent-%COMP%] {\r\n    margin: 10px;\r\n\r\n}\r\n\r\np[_ngcontent-%COMP%] {\r\n    line-height: 10px;\r\n}\r\n\r\n.missing-ingredient[_ngcontent-%COMP%] {\r\n    font-style: italic;\r\n    font-size: smaller;\r\n    color: red;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n    list-style-type: none;\r\n}\r\n\r\n#remove-icon[_ngcontent-%COMP%] {\r\n    border: none;\r\n    background-color: transparent;\r\n}\r\n\r\n#star-icon[_ngcontent-%COMP%] {\r\n    font-size: smaller;\r\n    vertical-align: middle;\r\n    color: gold;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTs7QUFFaEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZOztBQUVoQjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsVUFBVTtBQUNkOztBQUVBO0lBQ0kscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixzQkFBc0I7SUFDdEIsV0FBVztBQUNmIiwiZmlsZSI6InNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI0luZ3JlZGllbnQge1xyXG4gICAgd2lkdGg6IDIwMHB4O1xyXG5cclxufVxyXG5cclxuLmNhcmQtYm9keXtcclxuICAgIGhlaWdodDogMjBlbTtcclxufVxyXG5cclxuaW1ne1xyXG4gICAgd2lkdGg6IDEwMHB4O1xyXG4gICAgaGVpZ2h0OiA4MHB4O1xyXG59XHJcblxyXG4ucmVzdWx0LXRleHQge1xyXG4gICAgbWFyZ2luOiAxMHB4O1xyXG5cclxufVxyXG5cclxucCB7XHJcbiAgICBsaW5lLWhlaWdodDogMTBweDtcclxufVxyXG5cclxuLm1pc3NpbmctaW5ncmVkaWVudCB7XHJcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XHJcbiAgICBmb250LXNpemU6IHNtYWxsZXI7XHJcbiAgICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG5saSB7XHJcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XHJcbn1cclxuXHJcbiNyZW1vdmUtaWNvbiB7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxufVxyXG5cclxuI3N0YXItaWNvbiB7XHJcbiAgICBmb250LXNpemU6IHNtYWxsZXI7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xyXG4gICAgY29sb3I6IGdvbGQ7XHJcbn0iXX0= */"] });
+
+
+/***/ }),
+
+/***/ "KdpR":
+/*!*******************************************!*\
+  !*** ./src/app/ingredient-api.service.ts ***!
+  \*******************************************/
+/*! exports provided: IngredientApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IngredientApiService", function() { return IngredientApiService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+class IngredientApiService {
+    constructor(http) {
+        this.http = http;
+        this.path = '/ingredients';
+    }
+    getIngredients() {
+        return this.http.get(this.path);
+    }
+}
+IngredientApiService.ɵfac = function IngredientApiService_Factory(t) { return new (t || IngredientApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
+IngredientApiService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: IngredientApiService, factory: IngredientApiService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -1092,8 +1137,8 @@ class AppComponent {
             console.log("Inside here " + this.isLoggedIn);
             if (this.isLoggedIn) {
                 this.auth.getUserProfile().subscribe(data => {
-                    this.currentUser = JSON.stringify(data).replace(/"/g, "");
-                    this.currentUser = 'Hi, ' + this.currentUser;
+                    this.currentUser = JSON.parse(JSON.stringify(data));
+                    this.currentUser = 'Hi, ' + this.currentUser.displayName;
                 });
             }
             else {
