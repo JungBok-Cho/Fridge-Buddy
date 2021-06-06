@@ -84,15 +84,14 @@ var App = /** @class */ (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
-        router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+        router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
         router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/#/login' }), function (req, res) {
             console.log("successfully authenticated user and returned to callback page.");
             console.log("redirecting to /#");
             res.redirect('/#');
         });
         router.get('/users/auth/user', this.validateAuth, function (req, res) {
-            var userName = _this.googlePassportObj.displayName;
-            res.json(userName);
+            res.json(_this.googlePassportObj);
         });
         router.get('/users/loggedIn', function (req, res) {
             if (_this.googlePassportObj.userId != null && _this.googlePassportObj.userId != "") {

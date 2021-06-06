@@ -62,7 +62,7 @@ class App {
         let router = express.Router();
 
         router.get('/auth/google',
-            passport.authenticate('google', {scope: ['profile']}));
+            passport.authenticate('google', {scope: ['profile', 'email']}));
 
         router.get('/auth/google/callback', 
             passport.authenticate('google', 
@@ -76,8 +76,7 @@ class App {
         );
 
         router.get('/users/auth/user', this.validateAuth, (req, res) => {
-            var userName = this.googlePassportObj.displayName;
-            res.json(userName);
+            res.json(this.googlePassportObj);
         });
 
         router.get('/users/loggedIn', (req, res) => {
