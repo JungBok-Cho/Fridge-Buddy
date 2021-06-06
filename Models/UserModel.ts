@@ -19,15 +19,12 @@ class UserModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema({
             userId: String,
-            password: String,
             email: String,
-            firstName: String,
-            lastName: String,
             isPremium: Boolean,
             favoriteList: [],
             recentlyView: [],
+            ssoID: {type: String, required: true, unique: true},
         }, { collection: 'users' });
-        
     };
 
     public createModel(): void {
