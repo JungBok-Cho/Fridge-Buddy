@@ -230,6 +230,13 @@ class App {
             this.users.retrieveUser(res, {userId: id});
         });
 
+        // Get user by ssoId
+        router.get('/users/ssoId/:ssoId', (req, res) => {
+            let id = req.params.ssoId;
+            console.log("This is the sso id being checked: " + id);
+            this.users.retrieveUser(res, {ssoId: id});
+        });
+
         // Create a user
         router.post('/users', (req, res) => { 
             var receivedJson = req.body;

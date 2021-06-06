@@ -217,6 +217,12 @@ var App = /** @class */ (function () {
             var id = req.params.userId;
             _this.users.retrieveUser(res, { userId: id });
         });
+        // Get user by ssoId
+        router.get('/users/ssoId/:ssoId', function (req, res) {
+            var id = req.params.ssoId;
+            console.log("This is the sso id being checked: " + id);
+            _this.users.retrieveUser(res, { ssoId: id });
+        });
         // Create a user
         router.post('/users', function (req, res) {
             var receivedJson = req.body;
