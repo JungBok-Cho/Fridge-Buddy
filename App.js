@@ -47,6 +47,7 @@ var passport = require("passport");
 var RecipeModel_1 = require("./Models/RecipeModel");
 var ReviewModel_1 = require("./Models/ReviewModel");
 var UserModel_1 = require("./Models/UserModel");
+var IngredientModel_1 = require("./Models/IngredientModel");
 var logout = require('express-passport-logout');
 var App = /** @class */ (function () {
     function App() {
@@ -57,6 +58,7 @@ var App = /** @class */ (function () {
         this.recipes = new RecipeModel_1.RecipeModel();
         this.reviews = new ReviewModel_1.ReviewModel();
         this.users = new UserModel_1.UserModel();
+        this.ingredients = new IngredientModel_1.IngredientModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -155,6 +157,12 @@ var App = /** @class */ (function () {
         router["delete"]('/recipes/:recipeId', function (req, res) {
             var id = req.params.recipeId;
             _this.recipes.deleteRecipe(res, { recipeId: id });
+        });
+        /*******************************************************************************************/
+        /**********   INGREDIENT OPERATION  ************************************************************/
+        // Get the list of ingredients
+        router.get('/ingredients', function (req, res) {
+            _this.ingredients.retrieveIngredients(res);
         });
         /*******************************************************************************************/
         /**********   REVIEW OPERATION  ************************************************************/

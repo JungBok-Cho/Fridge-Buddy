@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\VS_Code_Project\FridgeBuddy_Angular\AngularFridgeBuddy\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\repos\fridgeBuddy\AngularFridgeBuddy\src\main.ts */"zUnb");
 
 
 /***/ }),
