@@ -7,12 +7,13 @@ import * as bodyParser from 'body-parser';
 import * as session from 'express-session';
 import * as cookieParser from 'cookie-parser';
 import GooglePassportObj from './GooglePassport';
-import * as passport from 'passport';
+import * as passport from 'passport';   
 
 import {RecipeModel} from './Models/RecipeModel';
 import {ReviewModel} from './Models/ReviewModel';
 import {UserModel} from './Models/UserModel';
 
+let logout = require('express-passport-logout');
 
 class App {
     public expressApp: express.Application;
@@ -73,6 +74,26 @@ class App {
                 res.redirect('/#');
                 } 
         );
+
+        router.get('/users/auth/user', this.validateAuth, (req, res) => {
+            var userName = this.googlePassportObj.displayName;
+            res.json(userName);
+        });
+
+        router.get('/users/loggedIn', (req, res) => {
+            if(this.googlePassportObj.userId != null && this.googlePassportObj.userId != ""){
+                res.send("true");
+            }else{
+                res.send("false"); 
+            }
+        })
+
+        router.get('/users/logout', this.validateAuth, (req, res) => {
+            this.googlePassportObj.userId = '';
+            console.log(this.googlePassportObj.userId);
+            logout();
+            res.send("false");
+        });
 
         /**********   RECIPE OPERATION  ************************************************************/
 

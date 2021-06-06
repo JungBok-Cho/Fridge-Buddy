@@ -47,6 +47,7 @@ var passport = require("passport");
 var RecipeModel_1 = require("./Models/RecipeModel");
 var ReviewModel_1 = require("./Models/ReviewModel");
 var UserModel_1 = require("./Models/UserModel");
+var logout = require('express-passport-logout');
 var App = /** @class */ (function () {
     function App() {
         this.googlePassportObj = new GooglePassport_1["default"]();
@@ -88,6 +89,24 @@ var App = /** @class */ (function () {
             console.log("successfully authenticated user and returned to callback page.");
             console.log("redirecting to /#");
             res.redirect('/#');
+        });
+        router.get('/users/auth/user', this.validateAuth, function (req, res) {
+            var userName = _this.googlePassportObj.displayName;
+            res.json(userName);
+        });
+        router.get('/users/loggedIn', function (req, res) {
+            if (_this.googlePassportObj.userId != null && _this.googlePassportObj.userId != "") {
+                res.send("true");
+            }
+            else {
+                res.send("false");
+            }
+        });
+        router.get('/users/logout', this.validateAuth, function (req, res) {
+            _this.googlePassportObj.userId = '';
+            console.log(_this.googlePassportObj.userId);
+            logout();
+            res.send("false");
         });
         /**********   RECIPE OPERATION  ************************************************************/
         // Get all recipes
