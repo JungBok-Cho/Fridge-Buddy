@@ -570,8 +570,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchByIngredientsComponent", function() { return SearchByIngredientsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _recipe_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../recipe-api-service */ "W+0M");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _ingredient_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ingredient-api.service */ "KdpR");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
 
 
 
@@ -641,18 +643,17 @@ function SearchByIngredientsComponent_li_22_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](6, _c1).constructor(result_r7.avgRate));
 } }
 class SearchByIngredientsComponent {
-    constructor(service) {
+    constructor(Recipeservice, IngredientService) {
         this.ingredientsArray = [];
         this.selectedIngredients = new Set;
         this.resultArray = [];
-        this.recipeApiService = service;
+        this.recipeApiService = Recipeservice;
+        this.ingredientApiService = IngredientService;
         this.getIngredient();
     }
     getIngredient() {
-        let listIngredient = this.ingredientApiService.getIngredients().subscribe((result) => {
-            for (let ingredient of result.ingredientName) {
-                this.ingredientsArray.push(ingredient);
-            }
+        this.ingredientApiService.getIngredients().subscribe((result) => {
+            this.ingredientsArray = result.ingredientName;
         });
     }
     onSelectIngredient(ingredient) {
@@ -680,7 +681,7 @@ class SearchByIngredientsComponent {
     ngOnInit() {
     }
 }
-SearchByIngredientsComponent.ɵfac = function SearchByIngredientsComponent_Factory(t) { return new (t || SearchByIngredientsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_1__["RecipeApiService"])); };
+SearchByIngredientsComponent.ɵfac = function SearchByIngredientsComponent_Factory(t) { return new (t || SearchByIngredientsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_1__["RecipeApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ingredient_api_service__WEBPACK_IMPORTED_MODULE_2__["IngredientApiService"])); };
 SearchByIngredientsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SearchByIngredientsComponent, selectors: [["app-search-by-ingredients"]], decls: 23, vars: 3, consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-6"], [1, "input-group"], ["id", "Ingredient", 1, "custom-select", 3, "change"], ["selected", ""], [3, "value", 4, "ngFor", "ngForOf"], [1, "card"], [1, "card-body"], [4, "ngFor", "ngForOf"], [1, "btn", "btn-light", 3, "click"], [1, "list-group"], ["class", "list-group-item", 4, "ngFor", "ngForOf"], [3, "value"], [1, "pull-right"], ["id", "remove-icon", 3, "click"], [1, "fas", "fa-trash"], [1, "list-group-item"], [3, "routerLink"], [1, "col-md-3"], ["alt", "", 1, "img-thumbnail", 3, "src"], [1, "col-md-9"], [1, "result-text"], ["id", "star-icon", "class", "fas fa-star", 4, "ngFor", "ngForOf"], ["id", "star-icon", 1, "fas", "fa-star"]], template: function SearchByIngredientsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "br");
@@ -727,7 +728,36 @@ SearchByIngredientsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__[
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.selectedIngredients);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.resultArray);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"]], styles: ["#Ingredient[_ngcontent-%COMP%] {\n    width: 200px;\n\n}\n\n.card-body[_ngcontent-%COMP%]{\n    height: 20em;\n}\n\nimg[_ngcontent-%COMP%]{\n    width: 100px;\n    height: 80px;\n}\n\n.result-text[_ngcontent-%COMP%] {\n    margin: 10px;\n\n}\n\np[_ngcontent-%COMP%] {\n    line-height: 10px;\n}\n\n.missing-ingredient[_ngcontent-%COMP%] {\n    font-style: italic;\n    font-size: smaller;\n    color: red;\n}\n\nli[_ngcontent-%COMP%] {\n    list-style-type: none;\n}\n\n#remove-icon[_ngcontent-%COMP%] {\n    border: none;\n    background-color: transparent;\n}\n\n#star-icon[_ngcontent-%COMP%] {\n    font-size: smaller;\n    vertical-align: middle;\n    color: gold;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTs7QUFFaEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZOztBQUVoQjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsVUFBVTtBQUNkOztBQUVBO0lBQ0kscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixzQkFBc0I7SUFDdEIsV0FBVztBQUNmIiwiZmlsZSI6InNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI0luZ3JlZGllbnQge1xuICAgIHdpZHRoOiAyMDBweDtcblxufVxuXG4uY2FyZC1ib2R5e1xuICAgIGhlaWdodDogMjBlbTtcbn1cblxuaW1ne1xuICAgIHdpZHRoOiAxMDBweDtcbiAgICBoZWlnaHQ6IDgwcHg7XG59XG5cbi5yZXN1bHQtdGV4dCB7XG4gICAgbWFyZ2luOiAxMHB4O1xuXG59XG5cbnAge1xuICAgIGxpbmUtaGVpZ2h0OiAxMHB4O1xufVxuXG4ubWlzc2luZy1pbmdyZWRpZW50IHtcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XG4gICAgZm9udC1zaXplOiBzbWFsbGVyO1xuICAgIGNvbG9yOiByZWQ7XG59XG5cbmxpIHtcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG59XG5cbiNyZW1vdmUtaWNvbiB7XG4gICAgYm9yZGVyOiBub25lO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xufVxuXG4jc3Rhci1pY29uIHtcbiAgICBmb250LXNpemU6IHNtYWxsZXI7XG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgICBjb2xvcjogZ29sZDtcbn0iXX0= */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLinkWithHref"]], styles: ["#Ingredient[_ngcontent-%COMP%] {\n    width: 200px;\n\n}\n\n.card-body[_ngcontent-%COMP%]{\n    height: 20em;\n}\n\nimg[_ngcontent-%COMP%]{\n    width: 100px;\n    height: 80px;\n}\n\n.result-text[_ngcontent-%COMP%] {\n    margin: 10px;\n\n}\n\np[_ngcontent-%COMP%] {\n    line-height: 10px;\n}\n\n.missing-ingredient[_ngcontent-%COMP%] {\n    font-style: italic;\n    font-size: smaller;\n    color: red;\n}\n\nli[_ngcontent-%COMP%] {\n    list-style-type: none;\n}\n\n#remove-icon[_ngcontent-%COMP%] {\n    border: none;\n    background-color: transparent;\n}\n\n#star-icon[_ngcontent-%COMP%] {\n    font-size: smaller;\n    vertical-align: middle;\n    color: gold;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTs7QUFFaEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZOztBQUVoQjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsVUFBVTtBQUNkOztBQUVBO0lBQ0kscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixzQkFBc0I7SUFDdEIsV0FBVztBQUNmIiwiZmlsZSI6InNlYXJjaC1ieS1pbmdyZWRpZW50cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI0luZ3JlZGllbnQge1xuICAgIHdpZHRoOiAyMDBweDtcblxufVxuXG4uY2FyZC1ib2R5e1xuICAgIGhlaWdodDogMjBlbTtcbn1cblxuaW1ne1xuICAgIHdpZHRoOiAxMDBweDtcbiAgICBoZWlnaHQ6IDgwcHg7XG59XG5cbi5yZXN1bHQtdGV4dCB7XG4gICAgbWFyZ2luOiAxMHB4O1xuXG59XG5cbnAge1xuICAgIGxpbmUtaGVpZ2h0OiAxMHB4O1xufVxuXG4ubWlzc2luZy1pbmdyZWRpZW50IHtcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XG4gICAgZm9udC1zaXplOiBzbWFsbGVyO1xuICAgIGNvbG9yOiByZWQ7XG59XG5cbmxpIHtcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG59XG5cbiNyZW1vdmUtaWNvbiB7XG4gICAgYm9yZGVyOiBub25lO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xufVxuXG4jc3Rhci1pY29uIHtcbiAgICBmb250LXNpemU6IHNtYWxsZXI7XG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgICBjb2xvcjogZ29sZDtcbn0iXX0= */"] });
+
+
+/***/ }),
+
+/***/ "KdpR":
+/*!*******************************************!*\
+  !*** ./src/app/ingredient-api.service.ts ***!
+  \*******************************************/
+/*! exports provided: IngredientApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IngredientApiService", function() { return IngredientApiService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+class IngredientApiService {
+    constructor(http) {
+        this.http = http;
+        this.path = '/ingredients';
+    }
+    getIngredients() {
+        return this.http.get(this.path);
+    }
+}
+IngredientApiService.ɵfac = function IngredientApiService_Factory(t) { return new (t || IngredientApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
+IngredientApiService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: IngredientApiService, factory: IngredientApiService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
