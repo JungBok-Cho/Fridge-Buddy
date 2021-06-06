@@ -1,20 +1,17 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
-var async = require('async');
 
-var assert = chai.assert;
 var expect = chai.expect;
-var should = chai.should();
-
-var http = require('http');
 chai.use(chaiHttp);
+
+var addr = "http://fridgebuddy555.azurewebsites.net";
 
 describe('Test Get All Recipes result', function () {
 	var requestResult;
 	var response;
 		 
     before(function (done) {
-        chai.request("http://localhost:4000")
+        chai.request(addr)
 			.get("/recipes")
 			.end(function (err, res) {
 				requestResult = res.body;
