@@ -12,6 +12,7 @@ import * as passport from 'passport';
 import {RecipeModel} from './Models/RecipeModel';
 import {ReviewModel} from './Models/ReviewModel';
 import {UserModel} from './Models/UserModel';
+import {IngredientModel} from './Models/IngredientModel';
 
 let logout = require('express-passport-logout');
 
@@ -21,6 +22,7 @@ class App {
     public recipes: RecipeModel;
     public reviews: ReviewModel;
     public users: UserModel;
+    public ingredients: IngredientModel;
     public googlePassportObj: GooglePassportObj;
 
     constructor() {
@@ -31,6 +33,7 @@ class App {
         this.recipes = new RecipeModel();
         this.reviews = new ReviewModel();
         this.users = new UserModel();
+        this.ingredients = new IngredientModel();
         
     }
 
@@ -157,6 +160,15 @@ class App {
             let id = req.params.recipeId;
 
             this.recipes.deleteRecipe(res, {recipeId: id});
+        })
+
+        /*******************************************************************************************/
+
+        /**********   INGREDIENT OPERATION  ************************************************************/
+
+        // Get the list of ingredients
+        router.get('/ingredients', (req, res) => {
+            this.ingredients.retrieveIngredients(res);
         })
 
         /*******************************************************************************************/
