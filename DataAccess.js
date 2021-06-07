@@ -16,7 +16,6 @@ var DataAccess = /** @class */ (function () {
         this.mongooseInstance = Mongoose.connect(this.DB_CONNECTION_STRING);
         return this.mongooseInstance;
     };
-    //static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:27017/fridge?authSource=admin';
     DataAccess.DB_CONNECTION_STRING = 'mongodb+srv://FridgeBuddy:fridge@fridgebuddy.fych5.mongodb.net/fridge?retryWrites=true&w=majority';
     return DataAccess;
 }());
