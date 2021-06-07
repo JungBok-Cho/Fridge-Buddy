@@ -69,12 +69,9 @@ var App = /** @class */ (function () {
         this.expressApp.use(cookieParser());
         this.expressApp.use(passport.initialize());
         this.expressApp.use(passport.session());
-        // this.expressApp.use(function(req, res, next) {
-        //     res.header("Access-Control-Allow-Origin", "*");
-        //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        //     next();
-        //  });
     };
+    /**********   OAUTH OPERATION  ************************************************************/
+    // Check to make sure user is authenticated (used to protect routes)
     App.prototype.validateAuth = function (req, res, next) {
         if (req.isAuthenticated()) {
             console.log("user is authenticated");
@@ -86,15 +83,19 @@ var App = /** @class */ (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        // Authenticates against Google
         router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+        // Callback page
         router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/#/login' }), function (req, res) {
             console.log("successfully authenticated user and returned to callback page.");
             console.log("redirecting to /#");
             res.redirect('/#');
         });
+        // Get the google user profile
         router.get('/users/auth/user', this.validateAuth, function (req, res) {
             res.json(_this.googlePassportObj);
         });
+        // Check if user is logged in or not
         router.get('/users/loggedIn', function (req, res) {
             if (_this.googlePassportObj.userId != null && _this.googlePassportObj.userId != "") {
                 res.send("true");
@@ -103,6 +104,7 @@ var App = /** @class */ (function () {
                 res.send("false");
             }
         });
+        // Log user out
         router.get('/users/logout', this.validateAuth, function (req, res) {
             _this.googlePassportObj.userId = '';
             console.log(_this.googlePassportObj.userId);
@@ -176,13 +178,13 @@ var App = /** @class */ (function () {
             _this.reviews.retrieveReview(res, { reviewId: id });
         });
         // Update a review
-        router.put('/reviews/:reviewId', function (req, res) {
+        router.put('/reviews/:reviewId', this.validateAuth, function (req, res) {
             var id = req.params.reviewId;
             var receivedJson = req.body;
             _this.reviews.updateReview(res, receivedJson, id);
         });
         // Create a new review
-        router.post('/reviews/:recipeId/', function (req, res) {
+        router.post('/reviews/:recipeId/', this.validateAuth, function (req, res) {
             var recipeId = req.params.recipeId;
             var receivedJson = req.body;
             var reviewId = receivedJson.reviewId;
@@ -202,7 +204,7 @@ var App = /** @class */ (function () {
             }); });
         });
         // Delete a review
-        router["delete"]('/reviews/:reviewId', function (req, res) {
+        router["delete"]('/reviews/:reviewId', this.validateAuth, function (req, res) {
             var id = req.params.reviewId;
             _this.reviews.deleteReview(res, { reviewId: id });
         });
@@ -218,7 +220,7 @@ var App = /** @class */ (function () {
             _this.users.retrieveUser(res, { userId: id });
         });
         // Get user by ssoId
-        router.get('/users/ssoId/:ssoId', function (req, res) {
+        router.get('/users/ssoId/:ssoId', this.validateAuth, function (req, res) {
             var id = req.params.ssoId;
             console.log("This is the sso id being checked: " + id);
             _this.users.retrieveUser(res, { ssoId: id });
