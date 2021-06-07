@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Users\roofeng\Repos\AngularFridgeBuddy\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! D:\VS_Code_Project\FridgeBuddy_Angular\AngularFridgeBuddy\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

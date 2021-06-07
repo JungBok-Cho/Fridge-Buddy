@@ -4,7 +4,6 @@ exports.UserModel = void 0;
 var Mongoose = require("mongoose");
 var DataAccess_1 = require("./../DataAccess");
 var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
 var UserModel = /** @class */ (function () {
     function UserModel() {
         this.createSchema();
@@ -24,12 +23,14 @@ var UserModel = /** @class */ (function () {
     UserModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("users", this.schema);
     };
+    // Get all users
     UserModel.prototype.retrieveAllUsers = function (response) {
         var query = this.model.find({});
         query.exec(function (err, userArray) {
             response.json(userArray);
         });
     };
+    // Retrieve user
     UserModel.prototype.retrieveUser = function (response, filter) {
         var query = this.model.findOne(filter);
         query.exec(function (err, innerUser) {
@@ -84,6 +85,7 @@ var UserModel = /** @class */ (function () {
             }
         });
     };
+    // Add favorite list
     UserModel.prototype.addToFavoriteList = function (response, UserId, RecipeId) {
         var isExisted = false;
         var query = this.model.findOne({ userId: UserId });
@@ -122,6 +124,7 @@ var UserModel = /** @class */ (function () {
         });
     };
     ;
+    // Remove a recipe from favorite list
     UserModel.prototype.removeFromFavoriteList = function (response, UserId, RecipeId) {
         var isExisted = false;
         var query = this.model.findOne({ userId: UserId });
@@ -160,6 +163,7 @@ var UserModel = /** @class */ (function () {
         });
     };
     ;
+    // Get favorite list
     UserModel.prototype.getFavoriteList = function (response, UserId, recipeModel) {
         var query = this.model.findOne({ userId: UserId });
         query.exec(function (err, innerUser) {
@@ -179,6 +183,7 @@ var UserModel = /** @class */ (function () {
         });
     };
     ;
+    // Remove favorite list
     UserModel.prototype.removeFavoriteList = function (response, UserId, RecipeId) {
         var query = this.model.findOne({ UserId: UserId });
         query.exec(function (err, innerUser) {

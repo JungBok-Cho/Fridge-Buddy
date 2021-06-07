@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Users\roofeng\Repos\AngularFridgeBuddy\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! D:\VS_Code_Project\FridgeBuddy_Angular\AngularFridgeBuddy\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -74,8 +74,6 @@ class SearchByCuisineComponent {
         this.recipeApiService = service;
         this.result = null;
         this.foundCuisine = false;
-    }
-    ngOnInit() {
     }
     searchRecipe(cuisine) {
         if (cuisine.length) {
@@ -221,8 +219,6 @@ class UserAccountPageComponent {
             this.ssoId = this.currentUser.userId;
             this.populateFavoriteList();
         }));
-    }
-    ngOnInit() {
     }
     populateFavoriteList() {
         let userInfo;
@@ -420,8 +416,6 @@ class ReviewApiService {
     postReview(body, recipeId) {
         console.log("The body is: " + JSON.stringify(body));
         console.log("The recipeid is: " + recipeId);
-        // let headers = new HttpHeaders();
-        // headers = headers.set('Content-Type', 'application/json');
         return this.http.post(this.path + recipeId, body);
     }
 }
@@ -552,8 +546,6 @@ class SearchByIngredientsComponent {
         else {
             this.resultArray = [];
         }
-    }
-    ngOnInit() {
     }
 }
 SearchByIngredientsComponent.ɵfac = function SearchByIngredientsComponent_Factory(t) { return new (t || SearchByIngredientsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_1__["RecipeApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ingredient_api_service__WEBPACK_IMPORTED_MODULE_2__["IngredientApiService"])); };
@@ -751,8 +743,6 @@ class ShowRecipeComponent {
             this.ssoId = this.currentUser.userId;
         }));
     }
-    ngOnInit() {
-    }
     sendReview(userComment, starRating) {
         const body = {
             "reviewId": angular2_uuid__WEBPACK_IMPORTED_MODULE_1__["UUID"].UUID(),
@@ -947,8 +937,6 @@ class HomepageComponent {
             this.recipes = result;
         });
     }
-    ngOnInit() {
-    }
 }
 HomepageComponent.ɵfac = function HomepageComponent_Factory(t) { return new (t || HomepageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_1__["RecipeApiService"])); };
 HomepageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomepageComponent, selectors: [["app-homepage"]], decls: 17, vars: 2, consts: [["appearance", "fill"], [3, "value", "selectionChange", "valueChange"], ["value", "Rating"], ["value", "Views"], [1, "row"], ["class", "col-lg-4 col-sm-6", 4, "ngFor", "ngForOf"], [1, "col-lg-4", "col-sm-6"], ["id", "homepagecard", 1, "card", "border-dark"], ["alt", "Card image cap", "width", "100", "height", "250", 1, "card-img-top", 3, "src"], [1, "card-body"], [1, "card-title"], [1, "rating", "card-text"], ["class", "fa fa-star", 4, "ngFor", "ngForOf"], [1, "col-md-12", "text-center"], [1, "btn", "btn-primary", "btn-lg", 3, "routerLink"], [1, "fa", "fa-star"]], template: function HomepageComponent_Template(rf, ctx) { if (rf & 1) {
@@ -1047,32 +1035,8 @@ class AppComponent {
             }
         });
     }
-    // logoutUser(status: string) {
-    //   this.isLoggedIn = (/true/i).test(status);
-    // }
-    // GetuserNameVal(name: string) {
-    //   this.currentUser = "Hi "+ name + "!";
-    // }
-    // GetuserNameVal(name:string) {
-    //   if(name) {
-    //     this.currentUser = "Hi "+ name + "!";
-    //   }
-    //   this.DisplayLogIn = false;
-    // }
-    // logMeOut(user:string){
-    //   this.currentUser = user;
-    //   if(this.currentUser != "Login / Sign Up")
-    //   {
-    //     this.DisplayLogout = true;
-    //   }
-    //   else{
-    //     this.DisplayLogout = false;
-    //     this.router.navigate(['/home']);
-    //   }
-    // }
     ChangeLoginStats() {
         if (this.currentUser != "Login / Sign Up") {
-            // name:string = 
             this.router.navigate(['/account']);
         }
         else {
@@ -1129,7 +1093,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isLoggedIn == false);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isLoggedIn == true);
-    } }, directives: [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbNavbar"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"]], styles: [".container[_ngcontent-%COMP%]{\r\n        position: relative;\r\n        z-index: 1;\r\n    }\r\n    \r\n    .loginForm[_ngcontent-%COMP%]{\r\n            position: relative;\r\n            margin: -285px 0;\r\n            z-index: 3;\r\n            background-color: white;\r\n            background-size:100% 100%;\r\n            opacity:   100; \r\n           \r\n    }\r\n    \r\n    .notification[_ngcontent-%COMP%]{\r\n        position:relative;\r\n        max-width: -webkit-fit-content;\r\n        max-width: -moz-fit-content;\r\n        max-width: fit-content;\r\n        font-size: 25px;\r\n        margin-left: 230px;\r\n        color: red;\r\n    }\r\n    \r\n    .logoutForm[_ngcontent-%COMP%]{\r\n         position: relative;\r\n            margin: -350px 0;\r\n            z-index: 100;\r\n            background-color: white;\r\n            background-size:100% 100%;\r\n            opacity:   100; \r\n    }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtRQUNJLGtCQUFrQjtRQUNsQixVQUFVO0lBQ2Q7O0lBRUE7WUFDUSxrQkFBa0I7WUFDbEIsZ0JBQWdCO1lBQ2hCLFVBQVU7WUFDVix1QkFBdUI7WUFDdkIseUJBQXlCO1lBQ3pCLGNBQWM7O0lBRXRCOztJQUVBO1FBQ0ksaUJBQWlCO1FBQ2pCLDhCQUFzQjtRQUF0QiwyQkFBc0I7UUFBdEIsc0JBQXNCO1FBQ3RCLGVBQWU7UUFDZixrQkFBa0I7UUFDbEIsVUFBVTtJQUNkOztJQUVBO1NBQ0ssa0JBQWtCO1lBQ2YsZ0JBQWdCO1lBQ2hCLFlBQVk7WUFDWix1QkFBdUI7WUFDdkIseUJBQXlCO1lBQ3pCLGNBQWM7SUFDdEIiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5jb250YWluZXJ7XHJcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAgIHotaW5kZXg6IDE7XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC5sb2dpbkZvcm17XHJcbiAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgICAgICAgICAgbWFyZ2luOiAtMjg1cHggMDtcclxuICAgICAgICAgICAgei1pbmRleDogMztcclxuICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQtc2l6ZToxMDAlIDEwMCU7XHJcbiAgICAgICAgICAgIG9wYWNpdHk6ICAgMTAwOyBcclxuICAgICAgICAgICBcclxuICAgIH1cclxuXHJcbiAgICAubm90aWZpY2F0aW9ue1xyXG4gICAgICAgIHBvc2l0aW9uOnJlbGF0aXZlO1xyXG4gICAgICAgIG1heC13aWR0aDogZml0LWNvbnRlbnQ7XHJcbiAgICAgICAgZm9udC1zaXplOiAyNXB4O1xyXG4gICAgICAgIG1hcmdpbi1sZWZ0OiAyMzBweDtcclxuICAgICAgICBjb2xvcjogcmVkO1xyXG4gICAgfVxyXG5cclxuICAgIC5sb2dvdXRGb3Jte1xyXG4gICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgICAgICAgIG1hcmdpbjogLTM1MHB4IDA7XHJcbiAgICAgICAgICAgIHotaW5kZXg6IDEwMDtcclxuICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQtc2l6ZToxMDAlIDEwMCU7XHJcbiAgICAgICAgICAgIG9wYWNpdHk6ICAgMTAwOyBcclxuICAgIH1cclxuIl19 */"] });
+    } }, directives: [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbNavbar"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"]], styles: [".container[_ngcontent-%COMP%]{\r\n    position: relative;\r\n    z-index: 1;\r\n}\r\n\r\n.loginForm[_ngcontent-%COMP%]{\r\n        position: relative;\r\n        margin: -285px 0;\r\n        z-index: 3;\r\n        background-color: white;\r\n        background-size:100% 100%;\r\n        opacity:   100; \r\n        \r\n}\r\n\r\n.notification[_ngcontent-%COMP%]{\r\n    position:relative;\r\n    max-width: -webkit-fit-content;\r\n    max-width: -moz-fit-content;\r\n    max-width: fit-content;\r\n    font-size: 25px;\r\n    margin-left: 230px;\r\n    color: red;\r\n}\r\n\r\n.logoutForm[_ngcontent-%COMP%]{\r\n        position: relative;\r\n        margin: -350px 0;\r\n        z-index: 100;\r\n        background-color: white;\r\n        background-size:100% 100%;\r\n        opacity:   100; \r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0lBQ2xCLFVBQVU7QUFDZDs7QUFFQTtRQUNRLGtCQUFrQjtRQUNsQixnQkFBZ0I7UUFDaEIsVUFBVTtRQUNWLHVCQUF1QjtRQUN2Qix5QkFBeUI7UUFDekIsY0FBYzs7QUFFdEI7O0FBRUE7SUFDSSxpQkFBaUI7SUFDakIsOEJBQXNCO0lBQXRCLDJCQUFzQjtJQUF0QixzQkFBc0I7SUFDdEIsZUFBZTtJQUNmLGtCQUFrQjtJQUNsQixVQUFVO0FBQ2Q7O0FBRUE7UUFDUSxrQkFBa0I7UUFDbEIsZ0JBQWdCO1FBQ2hCLFlBQVk7UUFDWix1QkFBdUI7UUFDdkIseUJBQXlCO1FBQ3pCLGNBQWM7QUFDdEIiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVye1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgei1pbmRleDogMTtcclxufVxyXG5cclxuLmxvZ2luRm9ybXtcclxuICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgICAgbWFyZ2luOiAtMjg1cHggMDtcclxuICAgICAgICB6LWluZGV4OiAzO1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQtc2l6ZToxMDAlIDEwMCU7XHJcbiAgICAgICAgb3BhY2l0eTogICAxMDA7IFxyXG4gICAgICAgIFxyXG59XHJcblxyXG4ubm90aWZpY2F0aW9ue1xyXG4gICAgcG9zaXRpb246cmVsYXRpdmU7XHJcbiAgICBtYXgtd2lkdGg6IGZpdC1jb250ZW50O1xyXG4gICAgZm9udC1zaXplOiAyNXB4O1xyXG4gICAgbWFyZ2luLWxlZnQ6IDIzMHB4O1xyXG4gICAgY29sb3I6IHJlZDtcclxufVxyXG5cclxuLmxvZ291dEZvcm17XHJcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAgIG1hcmdpbjogLTM1MHB4IDA7XHJcbiAgICAgICAgei1pbmRleDogMTAwO1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQtc2l6ZToxMDAlIDEwMCU7XHJcbiAgICAgICAgb3BhY2l0eTogICAxMDA7IFxyXG59Il19 */"] });
 
 
 /***/ }),
@@ -1151,7 +1115,6 @@ __webpack_require__.r(__webpack_exports__);
 class RecipeApiService {
     constructor(http) {
         this.http = http;
-        //hostUrl:string = 'http://fridgebuddy555.azurewebsites.net';
         this.path = '/recipes';
     }
     getRecipes() {
@@ -1215,7 +1178,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
-// import { NgModule } from '@angular/core';
 
 
 
