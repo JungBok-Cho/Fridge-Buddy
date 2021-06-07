@@ -654,15 +654,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipe_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../recipe-api-service */ "W+0M");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var _review_api_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../review-api.service */ "ELaa");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ "NFeN");
-/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
-/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/tabs */ "wZkO");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _angular_youtube_player__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/youtube-player */ "TIDI");
+/* harmony import */ var _user_api_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../user-api.service */ "5J1z");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/icon */ "NFeN");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
+/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/tabs */ "wZkO");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_youtube_player__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/youtube-player */ "TIDI");
+
 
 
 
@@ -728,9 +730,10 @@ function ShowRecipeComponent_mat_card_47_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", review_r7.comment, " ");
 } }
 class ShowRecipeComponent {
-    constructor(service, route, reviewService, router) {
+    constructor(service, route, reviewService, router, auth) {
         this.route = route;
         this.router = router;
+        this.auth = auth;
         this.starRating = 0;
         this.recipeApiService = service;
         this.reviewApiService = reviewService;
@@ -743,6 +746,10 @@ class ShowRecipeComponent {
         this.recipeApiService.getReviewsForRecipe(this.id).subscribe((result) => {
             this.reviews = result;
         });
+        this.auth.getUserProfile().subscribe((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.currentUser = yield JSON.parse(JSON.stringify(data));
+            this.ssoId = this.currentUser.userId;
+        }));
     }
     ngOnInit() {
     }
@@ -750,7 +757,7 @@ class ShowRecipeComponent {
         const body = {
             "reviewId": angular2_uuid__WEBPACK_IMPORTED_MODULE_1__["UUID"].UUID(),
             "comment": userComment,
-            "writer": "abc",
+            "writer": this.ssoId,
             "date": new Date().toLocaleDateString(),
             "rate": starRating
         };
@@ -761,7 +768,7 @@ class ShowRecipeComponent {
         }));
     }
 }
-ShowRecipeComponent.ɵfac = function ShowRecipeComponent_Factory(t) { return new (t || ShowRecipeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_3__["RecipeApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_review_api_service__WEBPACK_IMPORTED_MODULE_5__["ReviewApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"])); };
+ShowRecipeComponent.ɵfac = function ShowRecipeComponent_Factory(t) { return new (t || ShowRecipeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_recipe_api_service__WEBPACK_IMPORTED_MODULE_3__["RecipeApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_review_api_service__WEBPACK_IMPORTED_MODULE_5__["ReviewApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_user_api_service__WEBPACK_IMPORTED_MODULE_6__["UserApiService"])); };
 ShowRecipeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: ShowRecipeComponent, selectors: [["app-show-recipe"]], decls: 48, vars: 12, consts: [[1, "row"], [1, "col-auto"], [1, "pull-left"], ["mat-icon-button", "", "disabled", "", 1, "pull-right"], [1, "container"], [1, "col"], [1, "example-card"], ["mat-card-image", "", "alt", "Photo of the recipe", 3, "src"], ["mat-card-avatar", "", 1, "example-header-image"], [1, "example-full-width"], ["matInput", "", "placeholder", "Ex. I love this recipe"], ["userComment", ""], [3, "max", "rate", "readonly", "rateChange"], ["mat-raised-button", "", "color", "primary", 3, "click"], ["mat-align-tabs", "start"], ["label", "Description"], [4, "ngFor", "ngForOf"], ["label", "Instructions"], ["label", "Video"], ["suggestedQuality", "highres", 3, "videoId", "height", "width"], ["label", "Comments"], ["class", "mat-elevation-z0 outline", 4, "ngFor", "ngForOf"], [1, "mat-elevation-z0", "outline"]], template: function ShowRecipeComponent_Template(rf, ctx) { if (rf & 1) {
         const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "br");
@@ -859,7 +866,7 @@ ShowRecipeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("height", 250)("width", 500);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.reviews);
-    } }, directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_6__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIcon"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardImage"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardAvatar"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardContent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatLabel"], _angular_material_input__WEBPACK_IMPORTED_MODULE_10__["MatInput"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_11__["NgbRating"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardActions"], _angular_material_tabs__WEBPACK_IMPORTED_MODULE_12__["MatTabGroup"], _angular_material_tabs__WEBPACK_IMPORTED_MODULE_12__["MatTab"], _angular_common__WEBPACK_IMPORTED_MODULE_13__["NgForOf"], _angular_youtube_player__WEBPACK_IMPORTED_MODULE_14__["YouTubePlayer"], _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardSubtitle"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzaG93LXJlY2lwZS5jb21wb25lbnQuY3NzIn0= */"] });
+    } }, directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIcon"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardImage"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardAvatar"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardContent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__["MatLabel"], _angular_material_input__WEBPACK_IMPORTED_MODULE_11__["MatInput"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_12__["NgbRating"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardActions"], _angular_material_tabs__WEBPACK_IMPORTED_MODULE_13__["MatTabGroup"], _angular_material_tabs__WEBPACK_IMPORTED_MODULE_13__["MatTab"], _angular_common__WEBPACK_IMPORTED_MODULE_14__["NgForOf"], _angular_youtube_player__WEBPACK_IMPORTED_MODULE_15__["YouTubePlayer"], _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardSubtitle"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzaG93LXJlY2lwZS5jb21wb25lbnQuY3NzIn0= */"] });
 
 
 /***/ }),
