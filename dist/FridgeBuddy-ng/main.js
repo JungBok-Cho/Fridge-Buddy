@@ -1035,18 +1035,9 @@ class AppComponent {
             }
         });
     }
-    ChangeLoginStats() {
-        if (this.currentUser != "Login / Sign Up") {
-            this.router.navigate(['/account']);
-        }
-        else {
-            this.currentUser = "Login / Sign Up";
-            this.router.navigate(['/login']);
-        }
-    }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_user_api_service__WEBPACK_IMPORTED_MODULE_2__["UserApiService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 21, vars: 8, consts: [[1, "NavBarContainer"], [1, "container"], [1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], [1, "navbar-brand", 3, "routerLink"], ["type", "button", "data-toggle", "collapse", "data-target", "#navbarNav", "aria-controls", "navbarNav", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler"], [1, "navbar-toggler-icon"], ["id", "navbarNav", 1, "collapse", "navbar-collapse"], [1, "navbar-nav"], [1, "nav-item"], [1, "nav-link", 3, "routerLink"], [1, "navbar-nav", "ml-auto"], ["class", "nav-link", "href", "/#/login", 4, "ngIf"], ["class", "nav-link", "href", "/#/account", 4, "ngIf"], ["href", "/#/login", 1, "nav-link"], ["href", "/#/account", 1, "nav-link"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 21, vars: 8, consts: [[1, "NavBarContainer"], [1, "container"], [1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], [1, "navbar-brand", 3, "routerLink"], ["type", "button", "data-toggle", "collapse", "data-target", "#navbarNav", "aria-controls", "navbarNav", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler"], [1, "navbar-toggler-icon"], ["id", "navbarNav", 1, "collapse", "navbar-collapse"], [1, "navbar-nav"], [1, "nav-item"], [1, "nav-link", 3, "routerLink"], [1, "navbar-nav", "ml-auto"], ["class", "nav-link", "href", "/auth/google", 4, "ngIf"], ["class", "nav-link", "href", "/#/account", 4, "ngIf"], ["href", "/auth/google", 1, "nav-link"], ["href", "/#/account", 1, "nav-link"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "nav", 2);
@@ -1165,19 +1156,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_by_ingredients_search_by_ingredients_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search-by-ingredients/search-by-ingredients.component */ "GHrS");
 /* harmony import */ var _search_by_cuisine_search_by_cuisine_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search-by-cuisine/search-by-cuisine.component */ "1AP+");
 /* harmony import */ var _show_recipe_show_recipe_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./show-recipe/show-recipe.component */ "MNic");
-/* harmony import */ var _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login-page/login-page.component */ "pT+O");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "R1ws");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/icon */ "NFeN");
-/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/tabs */ "wZkO");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
-/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/select */ "d3UM");
-/* harmony import */ var _angular_youtube_player__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/youtube-player */ "TIDI");
-/* harmony import */ var _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user-account-page/user-account-page.component */ "2a2b");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/core */ "fXoL");
-
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "R1ws");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/icon */ "NFeN");
+/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/tabs */ "wZkO");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/select */ "d3UM");
+/* harmony import */ var _angular_youtube_player__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/youtube-player */ "TIDI");
+/* harmony import */ var _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./user-account-page/user-account-page.component */ "2a2b");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 
@@ -1200,94 +1189,38 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineInjector"]({ providers: [], imports: [[
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵdefineInjector"]({ providers: [], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClientModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"],
-            _angular_material_button__WEBPACK_IMPORTED_MODULE_10__["MatButtonModule"],
-            _angular_material_icon__WEBPACK_IMPORTED_MODULE_11__["MatIconModule"],
-            _angular_material_tabs__WEBPACK_IMPORTED_MODULE_12__["MatTabsModule"],
-            _angular_material_input__WEBPACK_IMPORTED_MODULE_13__["MatInputModule"],
-            _angular_material_card__WEBPACK_IMPORTED_MODULE_14__["MatCardModule"],
-            _angular_material_select__WEBPACK_IMPORTED_MODULE_15__["MatSelectModule"],
-            _angular_youtube_player__WEBPACK_IMPORTED_MODULE_16__["YouTubePlayerModule"],
-            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_18__["NgbModule"]
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
+            _angular_material_button__WEBPACK_IMPORTED_MODULE_9__["MatButtonModule"],
+            _angular_material_icon__WEBPACK_IMPORTED_MODULE_10__["MatIconModule"],
+            _angular_material_tabs__WEBPACK_IMPORTED_MODULE_11__["MatTabsModule"],
+            _angular_material_input__WEBPACK_IMPORTED_MODULE_12__["MatInputModule"],
+            _angular_material_card__WEBPACK_IMPORTED_MODULE_13__["MatCardModule"],
+            _angular_material_select__WEBPACK_IMPORTED_MODULE_14__["MatSelectModule"],
+            _angular_youtube_player__WEBPACK_IMPORTED_MODULE_15__["YouTubePlayerModule"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_17__["NgbModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
         _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_4__["HomepageComponent"],
         _search_by_ingredients_search_by_ingredients_component__WEBPACK_IMPORTED_MODULE_5__["SearchByIngredientsComponent"],
         _search_by_cuisine_search_by_cuisine_component__WEBPACK_IMPORTED_MODULE_6__["SearchByCuisineComponent"],
         _show_recipe_show_recipe_component__WEBPACK_IMPORTED_MODULE_7__["ShowRecipeComponent"],
-        _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_8__["LoginPageComponent"],
-        _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_17__["UserAccountPageComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+        _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_16__["UserAccountPageComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClientModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
-        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"],
-        _angular_material_button__WEBPACK_IMPORTED_MODULE_10__["MatButtonModule"],
-        _angular_material_icon__WEBPACK_IMPORTED_MODULE_11__["MatIconModule"],
-        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_12__["MatTabsModule"],
-        _angular_material_input__WEBPACK_IMPORTED_MODULE_13__["MatInputModule"],
-        _angular_material_card__WEBPACK_IMPORTED_MODULE_14__["MatCardModule"],
-        _angular_material_select__WEBPACK_IMPORTED_MODULE_15__["MatSelectModule"],
-        _angular_youtube_player__WEBPACK_IMPORTED_MODULE_16__["YouTubePlayerModule"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_18__["NgbModule"]] }); })();
-
-
-/***/ }),
-
-/***/ "pT+O":
-/*!****************************************************!*\
-  !*** ./src/app/login-page/login-page.component.ts ***!
-  \****************************************************/
-/*! exports provided: LoginPageComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageComponent", function() { return LoginPageComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _user_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user-api.service */ "5J1z");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
-
-
-
-class LoginPageComponent {
-    constructor(userService, Router) {
-        this.userService = userService;
-        this.Router = Router;
-    }
-}
-LoginPageComponent.ɵfac = function LoginPageComponent_Factory(t) { return new (t || LoginPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_user_api_service__WEBPACK_IMPORTED_MODULE_1__["UserApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-LoginPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginPageComponent, selectors: [["app-login-page"]], decls: 16, vars: 0, consts: [[1, "container"], [1, "row"], [1, "col-sm-8", "col-sm-offset-2", "text"], [1, "col-sm-6", "col-sm-offset-3", "form-box"], [1, "form-top"], [1, "form-top-right"], [1, "fa", "fa-key"], ["href", "/auth/google", "role", "button", 1, "btn", "btn-lg", "btn-lg"]], template: function LoginPageComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "h1");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "strong");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Welcome to Fridge Buddy!");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "i", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "a", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Google Login");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: [".btn-lg[_ngcontent-%COMP%] {\r\n    padding: 2px 20px;\r\n    font-size: 20px;\r\n    border-radius: 5px;\r\n    background-color: lightgray;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luLXBhZ2UuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlCQUFpQjtJQUNqQixlQUFlO0lBQ2Ysa0JBQWtCO0lBQ2xCLDJCQUEyQjtBQUMvQiIsImZpbGUiOiJsb2dpbi1wYWdlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYnRuLWxnIHtcclxuICAgIHBhZGRpbmc6IDJweCAyMHB4O1xyXG4gICAgZm9udC1zaXplOiAyMHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5O1xyXG59Il19 */"] });
+        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
+        _angular_material_button__WEBPACK_IMPORTED_MODULE_9__["MatButtonModule"],
+        _angular_material_icon__WEBPACK_IMPORTED_MODULE_10__["MatIconModule"],
+        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_11__["MatTabsModule"],
+        _angular_material_input__WEBPACK_IMPORTED_MODULE_12__["MatInputModule"],
+        _angular_material_card__WEBPACK_IMPORTED_MODULE_13__["MatCardModule"],
+        _angular_material_select__WEBPACK_IMPORTED_MODULE_14__["MatSelectModule"],
+        _angular_youtube_player__WEBPACK_IMPORTED_MODULE_15__["YouTubePlayerModule"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_17__["NgbModule"]] }); })();
 
 
 /***/ }),
@@ -1304,13 +1237,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./homepage/homepage.component */ "Oh3b");
-/* harmony import */ var _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login-page/login-page.component */ "pT+O");
-/* harmony import */ var _search_by_ingredients_search_by_ingredients_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./search-by-ingredients/search-by-ingredients.component */ "GHrS");
-/* harmony import */ var _search_by_cuisine_search_by_cuisine_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./search-by-cuisine/search-by-cuisine.component */ "1AP+");
-/* harmony import */ var _show_recipe_show_recipe_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./show-recipe/show-recipe.component */ "MNic");
-/* harmony import */ var _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user-account-page/user-account-page.component */ "2a2b");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ "fXoL");
-
+/* harmony import */ var _search_by_ingredients_search_by_ingredients_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search-by-ingredients/search-by-ingredients.component */ "GHrS");
+/* harmony import */ var _search_by_cuisine_search_by_cuisine_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./search-by-cuisine/search-by-cuisine.component */ "1AP+");
+/* harmony import */ var _show_recipe_show_recipe_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./show-recipe/show-recipe.component */ "MNic");
+/* harmony import */ var _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user-account-page/user-account-page.component */ "2a2b");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 
@@ -1322,18 +1253,17 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     { path: '', component: _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_1__["HomepageComponent"] },
     { path: 'home', component: _homepage_homepage_component__WEBPACK_IMPORTED_MODULE_1__["HomepageComponent"] },
-    { path: 'byIngredient', component: _search_by_ingredients_search_by_ingredients_component__WEBPACK_IMPORTED_MODULE_3__["SearchByIngredientsComponent"] },
-    { path: 'byCuisine', component: _search_by_cuisine_search_by_cuisine_component__WEBPACK_IMPORTED_MODULE_4__["SearchByCuisineComponent"] },
-    { path: 'showRecipe/:id', component: _show_recipe_show_recipe_component__WEBPACK_IMPORTED_MODULE_5__["ShowRecipeComponent"] },
-    { path: 'login', component: _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_2__["LoginPageComponent"] },
-    { path: 'account', component: _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_6__["UserAccountPageComponent"] }
+    { path: 'byIngredient', component: _search_by_ingredients_search_by_ingredients_component__WEBPACK_IMPORTED_MODULE_2__["SearchByIngredientsComponent"] },
+    { path: 'byCuisine', component: _search_by_cuisine_search_by_cuisine_component__WEBPACK_IMPORTED_MODULE_3__["SearchByCuisineComponent"] },
+    { path: 'showRecipe/:id', component: _show_recipe_show_recipe_component__WEBPACK_IMPORTED_MODULE_4__["ShowRecipeComponent"] },
+    { path: 'account', component: _user_account_page_user_account_page_component__WEBPACK_IMPORTED_MODULE_5__["UserAccountPageComponent"] }
 ];
 class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
-AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes, { useHash: true })], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes, { useHash: true })], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),
