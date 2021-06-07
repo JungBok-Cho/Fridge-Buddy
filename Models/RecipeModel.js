@@ -40,7 +40,6 @@ exports.RecipeModel = void 0;
 var Mongoose = require("mongoose");
 var DataAccess_1 = require("./../DataAccess");
 var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
 var RecipeModel = /** @class */ (function () {
     function RecipeModel() {
         this.createSchema();
@@ -91,6 +90,7 @@ var RecipeModel = /** @class */ (function () {
         });
     };
     ;
+    // Get a list of review
     RecipeModel.prototype.getReviewList = function (response, RecipeId, reviewModel) {
         var query = this.model.findOne({ recipeId: RecipeId });
         query.exec(function (err, innerRecipe) {
@@ -284,6 +284,7 @@ var RecipeModel = /** @class */ (function () {
             }
         });
     };
+    // Add review
     RecipeModel.prototype.addReview = function (response, ReviewId, recipe) {
         var isExisted = false;
         var query = this.model.findOne(recipe);
@@ -318,6 +319,7 @@ var RecipeModel = /** @class */ (function () {
         });
     };
     ;
+    // Remove review
     RecipeModel.prototype.removeReview = function (response, filter, ReviewId) {
         var query = this.model.findOne({ filter: filter });
         query.exec(function (err, innerRecipe) {

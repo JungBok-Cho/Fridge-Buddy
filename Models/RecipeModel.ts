@@ -1,12 +1,9 @@
 import Mongoose = require("mongoose");
-import {DataAccess} from './../DataAccess';
-import {IRecipeModel} from '../Interfaces/IRecipeModel';
-//import { IReviewModel } from "../Interfaces/IReviewModel";
-
-import {ReviewModel} from './ReviewModel';
+import { DataAccess } from './../DataAccess';
+import { IRecipeModel } from '../Interfaces/IRecipeModel';
+import { ReviewModel } from './ReviewModel';
 
 let mongooseConnection = DataAccess.mongooseConnection;
-let mongooseObj = DataAccess.mongooseInstance;
 
 class RecipeModel {
     public schema:any;
@@ -16,7 +13,6 @@ class RecipeModel {
     public constructor() {
         this.createSchema();
         this.createModel();
-        
     }
 
     public createSchema(): void {
@@ -32,7 +28,6 @@ class RecipeModel {
             avgRate:Number,
             viewers:Number
         }, { collection: 'recipes' });
-        
     };
 
     public createModel(): void {
@@ -48,18 +43,16 @@ class RecipeModel {
     }
 
     // Get recipe by id
-    public retrieveRecipe(response:any, filter:Object){
+    public retrieveRecipe(response:any, filter:Object) {
         var query = this.model.findOne(filter);
         query.exec(function (err, innerRecipe) {
-            if (err) {
+            if(err) {
                 console.log('error retrieving recipe');
-            }
-            else {
-                if (innerRecipe == null) {
+            } else {
+                if(innerRecipe == null) {
                     response.status(404);
                     response.json('Bad Request');
-                }
-                else {
+                } else {
                     console.log('Found!');
                     response.json(innerRecipe);
                 }
@@ -67,19 +60,18 @@ class RecipeModel {
         });
     };
 
-    public getReviewList(response:any, RecipeId: String, reviewModel: ReviewModel){
+    // Get a list of review
+    public getReviewList(response:any, RecipeId: String, reviewModel: ReviewModel) {
         var query = this.model.findOne({recipeId: RecipeId});
 
         query.exec(function (err, innerRecipe) {
-            if (err) {
+            if(err) {
                 console.log('error retrieving user');
-            }
-            else {
-                if (innerRecipe == null) {
+            } else {
+                if(innerRecipe == null) {
                     response.status(404);
                     response.json('Bad Request');
-                }
-                else {
+                } else {
                     console.log('Found!');
                     reviewModel.passReviewList(response, innerRecipe.reviewList);
                 }
@@ -93,7 +85,7 @@ class RecipeModel {
         let recipe;
 
         for (let i = 0; i < filter.length; i++) {
-            recipe = await this.model.findOne({recipeId: filter[i]}, function(err, innerRecipe){
+            recipe = await this.model.findOne({recipeId: filter[i]}, function(err, innerRecipe) {
                 return innerRecipe;
             });
             fillterArr.push(recipe);
@@ -104,21 +96,19 @@ class RecipeModel {
 
     //Get recipe by ingredients
     public retrieveRecibeByIngredients(response: any, filter: any) {
-
         //new array to put case insensitive argument
         let fillterArr = [];
         let size;
         let checkMock = "String";
 
-        if (filter === null || filter.length == 0) {
+        if(filter === null || filter.length == 0) {
             response.json(fillterArr);
         }
 
         // If the filter contain only one argument. it treats as string and cannot use loop
-        if (typeof filter === typeof checkMock) {
+        if(typeof filter === typeof checkMock) {
             fillterArr.push(new RegExp(filter, 'i')); //RegEx for case insensitive
-        }
-        else {
+        } else {
             for (let i = 0; i < filter.length; i++) {
                 fillterArr.push(new RegExp(filter[i], 'i'));
             }
@@ -129,20 +119,17 @@ class RecipeModel {
         
         var query = this.model.find({ingredientList: {$in: fillterArr }})
         query.exec((err, foundRecipe) => {
-            if (err) {
+            if(err) {
                 console.log(err);
             } else {
-                if (foundRecipe == null) {
+                if(foundRecipe == null) {
                     response.status(404);
                     response.json('Bad request');
-                }
-                else {
-                    
+                } else {
                     // New array for result
                     let resultArr = [];
 
                     for (let i = 0; i < foundRecipe.length; i++) {
-                        
                         // If ingredient list is too much longer than the ingredient arguments
                         // that's mean, most of the ingredients are missing
                         if (foundRecipe[i].ingredientList.length <= size) {
@@ -161,15 +148,13 @@ class RecipeModel {
         let query = this.model.findOne({recipeName: new RegExp(cuisine, 'i')});
 
         query.exec(function (err, foundRecipe) {
-            if (err) {
+            if(err) {
                 console.log('error retrieving recipe');
-            }
-            else {
-                if (foundRecipe == null) {
+            } else {
+                if(foundRecipe == null) {
                     response.status(404);
                     response.json('Bad Request');
-                }
-                else {
+                } else {
                     console.log('Found!');
                     response.json(foundRecipe);
                 }
@@ -182,14 +167,12 @@ class RecipeModel {
         let query = this.model.find().sort({viewers: -1}).limit(10);
 
         query.exec(function (err, topTenRecipe) {
-            if (err) {
+            if(err) {
                 console.log(err);
-            }
-            else {
-                if (topTenRecipe == null || topTenRecipe.length == 0) {
+            } else {
+                if(topTenRecipe == null || topTenRecipe.length == 0) {
                     response.status(404).send('Bad Request');
-                }
-                else {
+                } else {
                     response.json(topTenRecipe);
                 }
             }
@@ -201,14 +184,12 @@ class RecipeModel {
         let query = this.model.find().sort({avgRate: -1}).limit(10);
 
         query.exec(function (err, topTenRecipe) {
-            if (err) {
+            if(err) {
                 console.log(err);
-            }
-            else {
-                if (topTenRecipe == null || topTenRecipe.length == 0) {
+            } else {
+                if(topTenRecipe == null || topTenRecipe.length == 0) {
                     response.status(404).send('Bad Request');
-                }
-                else {
+                } else {
                     response.json(topTenRecipe);
                 }
             }
@@ -218,11 +199,10 @@ class RecipeModel {
     // Add new recipe in db
     public addNewRecipe(response: any, newRecipe: Object) {
         this.model.create([newRecipe], (err) => {
-            if (err) {
+            if(err) {
                 console.log(err);
                 response.status(404).send('Failed to add new recipe');
-            }
-            else {
+            } else {
                 response.status(200).send(newRecipe);
             }
         })
@@ -235,14 +215,13 @@ class RecipeModel {
             if(err) {
                 console.log('error retrieving recipe');
             } else {
-                if (foundRecipe == null) {
+                if(foundRecipe == null) {
                     response.status(404);
                     response.json('Bad Request');
                 } else {
                     foundRecipe.overwrite(updatedInfo);
                     foundRecipe.save(function(err){
-                        if(err)
-                        {
+                        if(err) {
                             response.send(err);
                         }                  
                         response.json(foundRecipe.recipeName + ' is updated');
@@ -255,45 +234,40 @@ class RecipeModel {
     // Delete recipe
     public deleteRecipe (response: any, recipeId: Object) {
         this.model.findOneAndDelete(recipeId, (err) => {
-            if (err) {
+            if(err) {
                 console.log(err);
-            }
-            else {
+            } else {
                 response.status(200).send('Recipe deleted');
             }
         })
-        
     }
 
-    public addReview(response:any, ReviewId: String, recipe:Object){
+    // Add review
+    public addReview(response:any, ReviewId: String, recipe:Object) {
         var isExisted : boolean = false;
         var query = this.model.findOne(recipe);
+
         query.exec(function (err, innerRecipe) {
-            if (err) {
+            if(err) {
                 console.log('error retrieving recipe');
-            }
-            else {
-                if (innerRecipe == null) {
+            } else {
+                if(innerRecipe == null) {
                     response.status(404);
                     response.json('Bad Request');
-                }
-                else {
-                    for(let i=0; i< innerRecipe.reviewList.length; i++)
-                    {
-                       if(innerRecipe.reviewList[i] == ReviewId)
-                       {
+                } else {
+                    for(let i=0; i< innerRecipe.reviewList.length; i++) {
+                       if(innerRecipe.reviewList[i] == ReviewId) {
                          isExisted = true;
                          break;
                        }
                     }
-                    if( isExisted === false)
-                    {
+
+                    if( isExisted === false) {
                         console.log('Found!');
                         innerRecipe.reviewList.push(ReviewId);
                         console.log(innerRecipe.reviewList);
                         innerRecipe.save(function(err){
-                            if(err)
-                            {
+                            if(err) {
                                 response.send(err);
                             }
                         });
@@ -303,20 +277,17 @@ class RecipeModel {
         });
     };
 
-
-    public removeReview(response:any, filter:Object, ReviewId:String){
-        
+    // Remove review
+    public removeReview(response:any, filter:Object, ReviewId:String) {
         var query = this.model.findOne({filter});
         query.exec(function (err, innerRecipe) {
-            if (err) {
+            if(err) {
                 console.log('error retrieving recipe');
-            }
-            else {
+            } else {
                 if (innerRecipe == null) {
                     response.status(404);
                     response.json('Bad Request');
-                }
-                else {
+                } else {
                     console.log('Found!' );
                     query.reviewList.filter(item => item.id !== ReviewId);
                     response.json('{reviewList:' + innerRecipe.reviewList + '}');
@@ -325,23 +296,19 @@ class RecipeModel {
         });
     };
 
-    public refreshRating(response:any, filter:Object){
-        
+    public refreshRating(response:any, filter:Object) {
         var query = this.model.findOne({filter});
         let avRate:number = 0;
         query.exec(function (err, innerRecipe) {
-            if (err) {
+            if(err) {
                 console.log('error retrieving recipe');
-            }
-            else {
+            } else {
                 if (innerRecipe == null) {
                     response.status(404);
                     response.json('Bad Request');
-                }
-                else {
+                } else {
                     console.log('Found!' );
-                    for( let i=0; i<innerRecipe.reviewList.length ; i++)
-                    {
+                    for( let i=0; i<innerRecipe.reviewList.length ; i++) {
                         var query = this.reviewModel.findeOne.where('reviewID',innerRecipe.reviewList[i]);
                         avRate += query.rate;
                     }
