@@ -1256,11 +1256,7 @@ __webpack_require__.r(__webpack_exports__);
 class LoginPageComponent {
     constructor(userService, Router) {
         this.userService = userService;
-        // this.onSelect();
         this.Router = Router;
-    }
-    ngOnInit() {
-        throw new Error('Method not implemented.');
     }
 }
 LoginPageComponent.ɵfac = function LoginPageComponent_Factory(t) { return new (t || LoginPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_user_api_service__WEBPACK_IMPORTED_MODULE_1__["UserApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
