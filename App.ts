@@ -199,11 +199,11 @@ class App {
             this.reviews.model.create([receivedJson], async (err) => {
                 if (err) {
                     console.log('object creation failed');
-                    res.status(404).send('Create failed');
+                    res.status(404).json('Create failed');
                 } else {
                     console.log('Review #' + reviewId + ' added');
                     this.recipes.addReview(res, reviewId, {recipeId: recipeId});
-                    res.status(200).send('Review added');
+                    res.status(200).json("Review added");
                 }
             });
         });
