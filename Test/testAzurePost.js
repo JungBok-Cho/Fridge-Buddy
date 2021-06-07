@@ -7,14 +7,14 @@ chai.use(chaiHttp);
 
 var addr = "http://fridgebuddy555.azurewebsites.net";
 
-describe('Test Post New Review', function () {
+describe('Test Post New User', function () {
 	var requestResult;
 	var response;
 		 
     before(function (done) {
         chai.request(addr)
 			.post("/users")
-            .send({userId: "testUser", password: "testing", email: "test@test.com", firstName: "test", lastName: "test", isPremium: false})
+            .send({userId: "classDemoUser", email: "classDemoUser@test.com", isPremium: false, ssoID: "113077640384098947127"})
 			.end(function (err, res) {
 				requestResult = res.body;
 				response = res;
@@ -24,20 +24,18 @@ describe('Test Post New Review', function () {
 			});
         });
     
-    it('Should return a single recipe object', function (){
+    it('Should return a single user object', function (){
 		expect(response).to.have.status(200);
 		expect(response).to.have.headers;
         expect(response).to.be.json;
     });
 
 	it('The response has the expected attributes', function(){
-        // Recipe contains expected attribute names
+        // User response contains expected attribute names
         expect(requestResult).to.have.property('userId');
-        expect(requestResult).to.have.property('password');
         expect(requestResult).to.have.property('email');
-        expect(requestResult).to.have.property('firstName');
-        expect(requestResult).to.have.property('lastName');
         expect(requestResult).to.have.property('isPremium');
+        expect(requestResult).to.have.property('ssoID');
 	});	
 	
 });
