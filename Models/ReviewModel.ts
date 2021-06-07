@@ -1,9 +1,8 @@
 import Mongoose = require("mongoose");
-import {DataAccess} from './../DataAccess';
-import {IReviewModel} from '../Interfaces/IReviewModel';
+import { DataAccess } from './../DataAccess';
+import { IReviewModel } from '../Interfaces/IReviewModel';
 
 let mongooseConnection = DataAccess.mongooseConnection;
-let mongooseObj = DataAccess.mongooseInstance;
 
 class ReviewModel {
     public schema:any;
@@ -22,13 +21,13 @@ class ReviewModel {
             date: String,
             rate: Number
         }, { collection: 'reviews' });
-        
     };
 
     public createModel(): void {
         this.model = mongooseConnection.model<IReviewModel>("reviews", this.schema);
     }
 
+    // Get all reviews
     public retrieveAllReviews(response:any): any {
         var query = this.model.find({});
         query.exec( (err, recipeArray) => {
@@ -36,18 +35,17 @@ class ReviewModel {
         });
     }
 
+    // Get a specific review
     public retrieveReview(response:any, filter:Object){
         var query = this.model.findOne(filter);
         query.exec(function (err, innerReview) {
-            if (err) {
+            if(err) {
                 console.log('error retrieving review');
-            }
-            else {
+            } else {
                 if (innerReview == null) {
                     response.status(404);
                     response.json('Bad Request');
-                }
-                else {
+                } else {
                     console.log('Found!');
                     response.json(innerReview);
                 }
@@ -55,6 +53,7 @@ class ReviewModel {
         });
     };
 
+    // Update review
     public updateReview(response:any, filter:Object, reviewId:String) {
         var query = this.model.findOne({reviewId});
         query.exec(function (err, innerReview) {
@@ -67,8 +66,7 @@ class ReviewModel {
                 } else {
                     innerReview.overwrite(filter);
                     innerReview.save(function(err){
-                        if(err)
-                        {
+                        if(err) {
                             response.send(err);
                         }                  
                         response.json("Review #" + innerReview.reviewId + ' was updated.')

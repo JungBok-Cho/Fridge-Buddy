@@ -40,7 +40,6 @@ exports.ReviewModel = void 0;
 var Mongoose = require("mongoose");
 var DataAccess_1 = require("./../DataAccess");
 var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
 var ReviewModel = /** @class */ (function () {
     function ReviewModel() {
         this.createSchema();
@@ -59,12 +58,14 @@ var ReviewModel = /** @class */ (function () {
     ReviewModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("reviews", this.schema);
     };
+    // Get all reviews
     ReviewModel.prototype.retrieveAllReviews = function (response) {
         var query = this.model.find({});
         query.exec(function (err, recipeArray) {
             response.json(recipeArray);
         });
     };
+    // Get a specific review
     ReviewModel.prototype.retrieveReview = function (response, filter) {
         var query = this.model.findOne(filter);
         query.exec(function (err, innerReview) {
@@ -84,6 +85,7 @@ var ReviewModel = /** @class */ (function () {
         });
     };
     ;
+    // Update review
     ReviewModel.prototype.updateReview = function (response, filter, reviewId) {
         var query = this.model.findOne({ reviewId: reviewId });
         query.exec(function (err, innerReview) {
