@@ -1,18 +1,15 @@
-import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
-import * as mongodb from 'mongodb';
-import * as url from 'url';
 import * as bodyParser from 'body-parser';
 import * as session from 'express-session';
 import * as cookieParser from 'cookie-parser';
-import GooglePassportObj from './GooglePassport';
 import * as passport from 'passport';   
+import GooglePassportObj from './GooglePassport';
 
-import {RecipeModel} from './Models/RecipeModel';
-import {ReviewModel} from './Models/ReviewModel';
-import {UserModel} from './Models/UserModel';
-import {IngredientModel} from './Models/IngredientModel';
+import { RecipeModel } from './Models/RecipeModel';
+import { ReviewModel } from './Models/ReviewModel';
+import { UserModel } from './Models/UserModel';
+import { IngredientModel } from './Models/IngredientModel';
 
 let logout = require('express-passport-logout');
 
@@ -34,7 +31,6 @@ class App {
         this.reviews = new ReviewModel();
         this.users = new UserModel();
         this.ingredients = new IngredientModel();
-        
     }
 
     // Configure Express middleware.
@@ -58,7 +54,6 @@ class App {
     }
 
     private routes(): void {
-
         let router = express.Router();
 
         // Authenticates against Google
@@ -74,7 +69,7 @@ class App {
                 console.log("successfully authenticated user and returned to callback page.");
                 console.log("redirecting to /#");
                 res.redirect('/#');
-                } 
+            } 
         );
         
         // Get the google user profile
@@ -84,9 +79,9 @@ class App {
 
         // Check if user is logged in or not
         router.get('/users/loggedIn', (req, res) => {
-            if(this.googlePassportObj.userId != null && this.googlePassportObj.userId != ""){
+            if(this.googlePassportObj.userId != null && this.googlePassportObj.userId != "") {
                 res.send("true");
-            }else{
+            } else {
                 res.send("false"); 
             }
         })
@@ -98,6 +93,9 @@ class App {
             logout();
             res.send("false");
         });
+
+        /*******************************************************************************************/
+
 
         /**********   RECIPE OPERATION  ************************************************************/
 
@@ -121,7 +119,6 @@ class App {
         // Get recipe by cuisine
         router.get('/recipes/byCuisine/:cuisine', (req, res) => {
             let cuisine = req.params.cuisine;
-
             this.recipes.getRecipeByCuisine(res, cuisine);
         })
 
@@ -138,7 +135,6 @@ class App {
         // Get review list of a recipe
         router.get('/recipes/getReviewList/:recipeId', (req, res) => {
             let recipeId = req.params.recipeId;
-
             this.recipes.getReviewList(res, recipeId, this.reviews);
         })
 
@@ -152,20 +148,19 @@ class App {
         router.put('/recipes/:recipeId', (req, res) => {
             let id = req.params.recipeId;
             let updatedInfo = req.body;
-
             this.recipes.updateRecipe(res, {reipeId: id}, updatedInfo);
         })
 
         // Delete recipe
         router.delete('/recipes/:recipeId', (req, res) => {
             let id = req.params.recipeId;
-
             this.recipes.deleteRecipe(res, {recipeId: id});
         })
 
         /*******************************************************************************************/
 
-        /**********   INGREDIENT OPERATION  ************************************************************/
+
+        /**********   INGREDIENT OPERATION  ********************************************************/
 
         // Get the list of ingredients
         router.get('/ingredients', (req, res) => {
@@ -173,6 +168,7 @@ class App {
         })
 
         /*******************************************************************************************/
+
 
         /**********   REVIEW OPERATION  ************************************************************/
         // Get all reviews
@@ -199,7 +195,7 @@ class App {
             var receivedJson = req.body;
             var reviewId = receivedJson.reviewId;
             this.reviews.model.create([receivedJson], async (err) => {
-                if (err) {
+                if(err) {
                     console.log('object creation failed');
                     res.status(404).json('Create failed');
                 } else {
@@ -243,7 +239,7 @@ class App {
         router.post('/users', (req, res) => { 
             var receivedJson = req.body;
             this.users.model.create([receivedJson], (err) => {
-                if (err) {
+                if(err) {
                     console.log('object creation failed');
                     res.status(404).send('Create failed');
                 } else {
@@ -262,14 +258,12 @@ class App {
         // Delete user
         router.delete('/users/:userId', (req, res) => {
             let id = req.params.userId;
-
             this.users.deleteUser(res, {userId: id});
         })
 
         // Get user's favorite recipe list
         router.get('/users/getFavorite/:userId', (req, res) => {
             let userId = req.params.userId;
-
             this.users.getFavoriteList(res, userId, this.recipes);
         })
 
@@ -280,14 +274,14 @@ class App {
             
             // Check if we have a specific recipe
             await this.recipes.model.find({recipeId: id}, function(err, result) {
-                if (err) throw err;
+                if(err) throw err;
                 if(result.length != 0) {
                     exist = true;
                 }
             });
             
             // If exist, add to the user's favorite list
-            if(exist){
+            if(exist) {
                 var userId = req.params.userId;
                 var recipeId = req.params.recipeId;           
                 this.users.addToFavoriteList(res, userId, recipeId);
@@ -304,14 +298,14 @@ class App {
             
             // Check if we have a specific recipe
             await this.recipes.model.find({recipeId: id}, function(err, result) {
-                if (err) throw err;
+                if(err) throw err;
                 if(result.length != 0) {
                     exist = true;
                 }
             });
             
             // If exist, add to the user's favorite list
-            if(exist){
+            if(exist) {
                 var userId = req.params.userId;
                 var recipeId = req.params.recipeId;           
                 this.users.removeFromFavoriteList(res, userId, recipeId);
@@ -331,8 +325,5 @@ class App {
         this.expressApp.use('/', express.static(__dirname+'/dist/FridgeBuddy-ng'));
     }
 
-
-
 }
-
 export {App};

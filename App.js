@@ -42,8 +42,8 @@ var logger = require("morgan");
 var bodyParser = require("body-parser");
 var session = require("express-session");
 var cookieParser = require("cookie-parser");
-var GooglePassport_1 = require("./GooglePassport");
 var passport = require("passport");
+var GooglePassport_1 = require("./GooglePassport");
 var RecipeModel_1 = require("./Models/RecipeModel");
 var ReviewModel_1 = require("./Models/ReviewModel");
 var UserModel_1 = require("./Models/UserModel");
@@ -111,6 +111,7 @@ var App = /** @class */ (function () {
             logout();
             res.send("false");
         });
+        /*******************************************************************************************/
         /**********   RECIPE OPERATION  ************************************************************/
         // Get all recipes
         router.get('/recipes', function (req, res) {
@@ -161,7 +162,7 @@ var App = /** @class */ (function () {
             _this.recipes.deleteRecipe(res, { recipeId: id });
         });
         /*******************************************************************************************/
-        /**********   INGREDIENT OPERATION  ************************************************************/
+        /**********   INGREDIENT OPERATION  ********************************************************/
         // Get the list of ingredients
         router.get('/ingredients', function (req, res) {
             _this.ingredients.retrieveIngredients(res);
