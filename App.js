@@ -78,7 +78,7 @@ var App = /** @class */ (function () {
             return next();
         }
         console.log("user is not authenticated");
-        res.redirect('/#/login');
+        res.redirect('/#');
     };
     App.prototype.routes = function () {
         var _this = this;
@@ -86,7 +86,7 @@ var App = /** @class */ (function () {
         // Authenticates against Google
         router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
         // Callback page
-        router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/#/login' }), function (req, res) {
+        router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/#' }), function (req, res) {
             console.log("successfully authenticated user and returned to callback page.");
             console.log("redirecting to /#");
             res.redirect('/#');

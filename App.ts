@@ -50,7 +50,7 @@ class App {
     private validateAuth(req, res, next):void {
         if (req.isAuthenticated()) { console.log("user is authenticated"); return next(); }
         console.log("user is not authenticated");
-        res.redirect('/#/login');
+        res.redirect('/#');
     }
 
     private routes(): void {
@@ -63,7 +63,7 @@ class App {
         // Callback page
         router.get('/auth/google/callback', 
             passport.authenticate('google', 
-            { failureRedirect: '/#/login' }
+            { failureRedirect: '/#' }
             ),
             (req, res) => {
                 console.log("successfully authenticated user and returned to callback page.");
